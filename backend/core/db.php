@@ -1,11 +1,10 @@
 <?php
-
 $config = require __DIR__ . '/config.php';
 $db = $config['db'];
 
 try {
     $pdo = new PDO(
-        "mysql:host={$db['host']};port={$db['port']};charset=utf8",
+        "mysql:host={$db['host']};port={$db['port']};charset=utf8mb4",
         $db['user'],
         $db['pass'],
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
@@ -15,6 +14,7 @@ try {
     $pdo->exec("USE `{$db['name']}`");
 
 } catch (PDOException $e) {
-    echo json_encode(['status'=>'error','msg'=>$e->getMessage()]);
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'msg' => 'DB connection error: ' . $e->getMessage()]);
     exit;
 }

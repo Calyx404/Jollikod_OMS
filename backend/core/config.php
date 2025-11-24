@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'base_url' => 'http://jollikod.order',
     'db' => [
         'host' => '127.0.0.1',
         'port' => 3306,
@@ -8,5 +9,7 @@ return [
         'user' => 'root',
         'pass' => ''
     ],
-    'base_url' => 'http://localhost/Jollikod_OMS'
+    'mail' => [
+        'from' => 'no-reply.jollikod@gmail.com'
+    ]
 ];
