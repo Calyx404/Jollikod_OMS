@@ -1,0 +1,20 @@
+<?php
+
+$config = require __DIR__ . '/config.php';
+$db = $config['db'];
+
+try {
+    $pdo = new PDO(
+        "mysql:host={$db['host']};port={$db['port']};charset=utf8",
+        $db['user'],
+        $db['pass'],
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS `{$db['name']}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    $pdo->exec("USE `{$db['name']}`");
+
+} catch (PDOException $e) {
+    echo json_encode(['status'=>'error','msg'=>$e->getMessage()]);
+    exit;
+}

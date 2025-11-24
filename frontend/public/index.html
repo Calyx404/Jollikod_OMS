@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Jollikod — Bida ka!</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+<body class="bg-gray-50">
+  <div class="max-w-3xl mx-auto p-8">
+    <h1 class="text-3xl font-bold text-red-600">Jollikod Frontend</h1>
+    <p id="api-status" class="mt-4">Checking backend...</p>
+    <script>
+      fetch('../../backend/public/index.php').then(r=>r.json()).then(d=>{
+        document.getElementById('api-status').innerText = 'Backend: ' + JSON.stringify(d);
+      }).catch(e=>{
+        document.getElementById('api-status').innerText = 'Backend unreachable: ' + e;
+      });
+    </script>
+  </div>
+</body>
+</html>
