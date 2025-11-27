@@ -1,4 +1,9 @@
 <?php
+
+require_once __DIR__ . '/../middlewares/BranchAuth.php';
+BranchAuth::check();
+
+
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {

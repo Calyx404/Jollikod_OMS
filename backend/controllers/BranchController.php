@@ -7,7 +7,7 @@ class CustomerController {
     }
 
     public function register() {
-        BranchAuthMiddleware::handle();
+        BranchAuth::handle();
     
         $owner = $_POST['owner_name'] ?? null;
         $email = $_POST['email'] ?? null;

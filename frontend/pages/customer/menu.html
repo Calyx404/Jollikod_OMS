@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jollikod - Menu</title>
+  </head>
+  <body>
+    <script>
+      fetch("/backend/public/index.php?api=1&resource=customers")
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.status !== "ok") {
+            window.location.href = "/frontend/routes/home/LoginCustomer.html";
+          }
+        });
+    </script>
+
+    Customer
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jollikod - Menu</title>
+  </head>
+  <body>
+    <script>
+      fetch("/backend/public/index.php?api=1&resource=branches")
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.status !== "ok") {
+            window.location.href = "/frontend/routes/home/LoginBranch.html";
+          }
+        });
+    </script>
+
+    <div class="p-4">
+      <h1 class="text-2xl font-bold mb-4">Inventory Management</h1>
+
+      <div class="mb-4">
+        <label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter" class="border px-2 py-1 rounded"></select>
+        <button
+          onclick="showAddModal()"
+          class="ml-2 bg-red-600 text-white px-3 py-1 rounded"
+        >
+          Add Item
+        </button>
+      </div>
+
+      <div
+        id="inventoryList"
+        class="grid grid-cols-1 md:grid-cols-2 gap-4"
+      ></div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      id="inventoryModal"
+      class="fixed inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center"
+    >
+      <div class="bg-white p-6 rounded w-96">
+        <h2 id="modalTitle" class="text-xl font-bold mb-2">Add Item</h2>
+        <input type="hidden" id="itemId" />
+        <div class="mb-2">
+          <label>Name:</label>
+          <input id="itemName" type="text" class="border w-full px-2 py-1" />
+        </div>
+        <div class="mb-2">
+          <label>Category:</label>
+          <select id="itemCategory" class="border w-full px-2 py-1"></select>
+        </div>
+        <div class="mb-2">
+          <label>Price:</label>
+          <input
+            id="itemPrice"
+            type="number"
+            class="border w-full px-2 py-1"
+            step="0.01"
+          />
+        </div>
+        <div class="mb-2">
+          <label>Description:</label>
+          <textarea
+            id="itemDescription"
+            class="border w-full px-2 py-1"
+          ></textarea>
+        </div>
+        <div class="flex justify-end mt-4">
+          <button onclick="closeModal()" class="mr-2 px-3 py-1 border rounded">
+            Cancel
+          </button>
+          <button
+            onclick="saveItem()"
+            class="bg-red-600 text-white px-3 py-1 rounded"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/frontend/utils/ajax.js"></script>
+    <script src="/frontend/utils/formatter.js"></script>
+    <script>
+      let categories = [];
+      let inventoryData = [];
+
+      async function fetchCategories() {
+        const res = await ajax({
+          url: "/backend/public/index.php?api=1&resource=inventory_categories&action=list",
+        });
+        if (res.status === "ok") {
+          categories = res.data;
+          const select = document.getElementById("categoryFilter");
+          select.innerHTML =
+            `<option value="">All</option>` +
+            categories
+              .map(
+                (c) =>
+                  `<option value="${c.inventory_category_id}">${c.name}</option>`
+              )
+              .join("");
+          const itemCat = document.getElementById("itemCategory");
+          itemCat.innerHTML = categories
+            .map(
+              (c) =>
+                `<option value="${c.inventory_category_id}">${c.name}</option>`
+            )
+            .join("");
+        }
+      }
+
+      async function fetchInventory() {
+        const res = await ajax({
+          url: "/backend/public/index.php?api=1&resource=inventory_items&action=list",
+        });
+        if (res.status === "ok") {
+          inventoryData = res.data;
+          renderInventory(res.data);
+        }
+      }
+
+      function renderInventory(data) {
+        const list = document.getElementById("inventoryList");
+        const filter = document.getElementById("categoryFilter").value;
+        const filtered = filter
+          ? data.filter((i) => i.inventory_category_id == filter)
+          : data;
+
+        list.innerHTML = filtered
+          .map(
+            (i) => `
+          <div class="border p-3 rounded shadow">
+              <div class="flex justify-between items-center">
+                  <div>
+                      <b>${i.name}</b> (${i.category_name})<br>
+                      ${i.description}<br>
+                      <b>${formatCurrency(i.price)}</b><br>
+                      Stock: ${i.stock_quantity} (${capitalize(i.stock_status)})
+                  </div>
+                  <div class="space-y-1">
+                      <button onclick="editItem(${
+                        i.inventory_item_id
+                      })" class="px-2 py-1 border rounded">Edit</button>
+                      <button onclick="deleteItem(${
+                        i.inventory_item_id
+                      })" class="px-2 py-1 border rounded">Delete</button>
+                  </div>
+              </div>
+          </div>
+      `
+          )
+          .join("");
+      }
+
+      // Modal
+      function showAddModal() {
+        document.getElementById("inventoryModal").classList.remove("hidden");
+        document.getElementById("modalTitle").innerText = "Add Item";
+        document.getElementById("itemId").value = "";
+        document.getElementById("itemName").value = "";
+        document.getElementById("itemDescription").value = "";
+        document.getElementById("itemPrice").value = "";
+      }
+
+      function closeModal() {
+        document.getElementById("inventoryModal").classList.add("hidden");
+      }
+
+      async function saveItem() {
+        const id = document.getElementById("itemId").value;
+        const payload = {
+          inventory_category_id: document.getElementById("itemCategory").value,
+          name: document.getElementById("itemName").value,
+          price: document.getElementById("itemPrice").value,
+          description: document.getElementById("itemDescription").value,
+        };
+
+        const action = id ? "update" : "create";
+        if (id) payload.id = id;
+
+        const res = await ajax({
+          method: "POST",
+          url: `/backend/public/index.php?api=1&resource=inventory_items&action=${action}`,
+          data: payload,
+        });
+        if (res.status === "ok") {
+          closeModal();
+          fetchInventory();
+        }
+      }
+
+      async function editItem(id) {
+        const item = inventoryData.find((i) => i.inventory_item_id == id);
+        if (!item) return;
+        document.getElementById("itemId").value = item.inventory_item_id;
+        document.getElementById("itemName").value = item.name;
+        document.getElementById("itemDescription").value = item.description;
+        document.getElementById("itemPrice").value = item.price;
+        document.getElementById("itemCategory").value =
+          item.inventory_category_id;
+        document.getElementById("modalTitle").innerText = "Edit Item";
+        document.getElementById("inventoryModal").classList.remove("hidden");
+      }
+
+      async function deleteItem(id) {
+        if (!confirm("Delete this item?")) return;
+        const res = await ajax({
+          method: "POST",
+          url: `/backend/public/index.php?api=1&resource=inventory_items&action=delete`,
+          data: { id },
+        });
+        if (res.status === "ok") fetchInventory();
+      }
+
+      // Event Listeners
+      document
+        .getElementById("categoryFilter")
+        .addEventListener("change", () => renderInventory(inventoryData));
+
+      fetchCategories();
+      fetchInventory();
+    </script>
+  </body>
+</html>

@@ -7,7 +7,7 @@ class CustomerController {
     }
 
     public function register() {
-        CustomerAuthMiddleware::handle();
+        CustomerAuth::check();
 
         $name = $_POST['name'] ?? null;
         $email = $_POST['email'] ?? null;

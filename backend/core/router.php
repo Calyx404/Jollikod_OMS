@@ -8,6 +8,10 @@ $routesMap = [
     'auth' => __DIR__ . '/../routes/auth.php',
     'customers' => __DIR__ . '/../routes/customers.php',
     'branches' => __DIR__ . '/../routes/branches.php',
+    'logout' => __DIR__ . '/../routes/logout.php',
+    'inventory_categories' => __DIR__ . '/../routes/inventory_categories.php',
+    'inventory_items' => __DIR__ . '/../routes/inventory_items.php',
+    'inventory_stocks' => __DIR__ . '/../routes/inventory_stocks.php',
     // add more as we implement them
 ];
 
