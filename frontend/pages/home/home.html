@@ -4,447 +4,338 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Jollikod - Order food now</title>
-
-    <link rel="stylesheet" href="../../public/assets/css/home.css" />
-    <script src="../../public/assets/js/home.js"></script>
+    <link rel="stylesheet" href="../../assets/css/home.css" />
+    <script src="../../assets/js/home.js"></script>
   </head>
   <body>
     <!-- Header -->
     <header id="header">
-      <div class="logo">Jollikod</div>
-      <div class="header-btns">
+      <h1 class="logo"><a href="./home.html">Jollikod.</a></h1>
+      <div class="actions">
         <a href="#login" class="btn btn-secondary">Log In</a>
         <a href="#register" class="btn btn-primary">Register</a>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="hero-bg"></div>
+    <main id="main-container">
+      <main id="main">
+        <!-- Hero Section -->
+        <section class="main-section hero" id="hero">
+          <div class="hero-bg"></div>
 
-      <!-- Floating Food Elements -->
-      <svg class="floating-food food-1" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" fill="#ffbd05" opacity="0.3" />
-        <path d="M30,50 Q50,30 70,50 Q50,70 30,50" fill="#fe7002" />
-        <circle cx="50" cy="45" r="15" fill="#c1011a" />
-        <rect x="40" y="55" width="20" height="8" rx="4" fill="#ffbd05" />
-      </svg>
+          <!-- Floating Food Elements -->
+          <svg class="floating-food food-1" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#ffbd05" opacity="0.3" />
+            <path d="M30,50 Q50,30 70,50 Q50,70 30,50" fill="#fe7002" />
+            <circle cx="50" cy="45" r="15" fill="#c1011a" />
+            <rect x="40" y="55" width="20" height="8" rx="4" fill="#ffbd05" />
+          </svg>
 
-      <svg class="floating-food food-2" viewBox="0 0 100 100">
-        <rect
-          x="20"
-          y="30"
-          width="60"
-          height="50"
-          rx="8"
-          fill="#fe7002"
-          opacity="0.8"
-        />
-        <rect x="25" y="35" width="50" height="10" rx="5" fill="#ffbd05" />
-        <rect x="30" y="50" width="40" height="8" rx="4" fill="#c1011a" />
-        <rect x="35" y="63" width="30" height="8" rx="4" fill="#ffbd05" />
-      </svg>
+          <svg class="floating-food food-2" viewBox="0 0 100 100">
+            <rect
+              x="20"
+              y="30"
+              width="60"
+              height="50"
+              rx="8"
+              fill="#fe7002"
+              opacity="0.8"
+            />
+            <rect x="25" y="35" width="50" height="10" rx="5" fill="#ffbd05" />
+            <rect x="30" y="50" width="40" height="8" rx="4" fill="#c1011a" />
+            <rect x="35" y="63" width="30" height="8" rx="4" fill="#ffbd05" />
+          </svg>
 
-      <svg class="floating-food food-3" viewBox="0 0 100 100">
-        <ellipse cx="50" cy="65" rx="20" ry="25" fill="#ffbd05" opacity="0.7" />
-        <rect x="35" y="35" width="30" height="35" fill="#fe7002" />
-        <circle cx="50" cy="30" r="8" fill="#c1011a" />
-      </svg>
+          <svg class="floating-food food-3" viewBox="0 0 100 100">
+            <ellipse
+              cx="50"
+              cy="65"
+              rx="20"
+              ry="25"
+              fill="#ffbd05"
+              opacity="0.7"
+            />
+            <rect x="35" y="35" width="30" height="35" fill="#fe7002" />
+            <circle cx="50" cy="30" r="8" fill="#c1011a" />
+          </svg>
 
-      <svg class="floating-food food-4" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="#c1011a" opacity="0.4" />
-        <path d="M30,50 L50,30 L70,50 L50,70 Z" fill="#ffbd05" />
-        <circle cx="50" cy="50" r="15" fill="#fe7002" />
-      </svg>
+          <svg class="floating-food food-4" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#c1011a" opacity="0.4" />
+            <path d="M30,50 L50,30 L70,50 L50,70 Z" fill="#ffbd05" />
+            <circle cx="50" cy="50" r="15" fill="#fe7002" />
+          </svg>
 
-      <div class="hero-content">
-        <h1>Satisfy Your Cravings</h1>
-        <p>
-          Fast, fresh, and delivered right to your door. Experience the joy of
-          Jollikod!
-        </p>
-        <div class="hero-buttons">
-          <a href="#customer" class="btn btn-primary">Register as Customer</a>
-          <a href="#branch" class="btn btn-yellow">Register as Branch</a>
-          <a href="#login" class="btn btn-secondary">Log In</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Popular Deals Section -->
-    <section class="deals" id="deals">
-      <h2 class="section-title">🔥 Popular Deals of the Week</h2>
-      <div class="deals-grid">
-        <div class="deal-card" data-parallax="0.05">
-          <div class="deal-accent"></div>
-          <img
-            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop"
-            alt="Ultimate Burger Combo"
-            class="deal-image"
-          />
-          <h3>Ultimate Burger Combo</h3>
-          <p class="deal-price">₱299</p>
-          <p class="deal-desc">
-            Juicy double patty burger with crispy fries and a refreshing drink.
-            Perfect for burger lovers!
-          </p>
-          <a href="#order" class="btn btn-primary">Order Now</a>
-        </div>
-
-        <div class="deal-card" data-parallax="0.08">
-          <div
-            class="deal-accent"
-            style="
-              background: linear-gradient(135deg, var(--orange), var(--red));
-            "
-          ></div>
-          <img
-            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop"
-            alt="Crispy Chicken Feast"
-            class="deal-image"
-          />
-          <h3>Crispy Chicken Feast</h3>
-          <p class="deal-price">₱349</p>
-          <p class="deal-desc">
-            Golden fried chicken with savory rice and gravy. A meal that hits
-            the spot every time!
-          </p>
-          <a href="#order" class="btn btn-primary">Order Now</a>
-        </div>
-
-        <div class="deal-card" data-parallax="0.06">
-          <div
-            class="deal-accent"
-            style="
-              background: linear-gradient(135deg, var(--red), var(--yellow));
-            "
-          ></div>
-          <img
-            src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=400&fit=crop"
-            alt="Family Sharing Box"
-            class="deal-image"
-          />
-          <h3>Family Sharing Box</h3>
-          <p class="deal-price">₱899</p>
-          <p class="deal-desc">
-            A complete feast for the whole family! Includes burgers, chicken,
-            fries, and drinks for 4.
-          </p>
-          <a href="#order" class="btn btn-primary">Order Now</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline" id="timeline">
-      <h2 class="section-title">How Jollikod Works</h2>
-      <div class="timeline-container">
-        <div class="timeline-item" data-step="1">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 100 100" width="80" height="80">
-              <circle cx="50" cy="50" r="45" fill="#ffbd05" />
-              <rect x="30" y="35" width="40" height="35" rx="5" fill="#fff" />
-              <rect x="35" y="42" width="30" height="4" rx="2" fill="#c1011a" />
-              <rect x="35" y="52" width="30" height="4" rx="2" fill="#fe7002" />
-              <rect x="35" y="62" width="20" height="4" rx="2" fill="#c1011a" />
-            </svg>
-          </div>
-          <div class="timeline-content">
-            <h3>Browse Mouthwatering Menus</h3>
+          <div class="hero-content">
+            <h1>Satisfy Your Cravings</h1>
             <p>
-              Explore hundreds of delicious options from your favorite fast-food
-              spots. Filter by cuisine, price, or dietary preferences.
+              Fast, fresh, and delivered right to your door. Experience the joy
+              of Jollikod!
             </p>
           </div>
-        </div>
+        </section>
 
-        <div class="timeline-item" data-step="2">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 100 100" width="80" height="80">
-              <circle cx="50" cy="50" r="45" fill="#fe7002" />
-              <path
-                d="M30,45 L45,60 L70,35"
-                stroke="#fff"
-                stroke-width="8"
-                fill="none"
-                stroke-linecap="round"
+        <!-- Popular Deals Section -->
+        <section class="main-section deals" id="deals">
+          <h2 class="section-title">Popular Deals of the Week</h2>
+          <div class="deals-grid">
+            <div class="deal-card" data-parallax="0.05">
+              <div class="deal-accent"></div>
+              <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop"
+                alt="Ultimate Burger Combo"
+                class="deal-image"
               />
-            </svg>
-          </div>
-          <div class="timeline-content">
-            <h3>Customize Your Order</h3>
-            <p>
-              Make it yours! Add extra cheese, remove pickles, or create your
-              own combo. Your meal, your way.
-            </p>
-          </div>
-        </div>
+              <h3>Ultimate Burger Combo</h3>
+              <p class="deal-price">₱299</p>
+              <p class="deal-desc">
+                Juicy double patty burger with crispy fries and a refreshing
+                drink. Perfect for burger lovers!
+              </p>
+              <a href="#order" class="btn btn-primary">Order Now</a>
+            </div>
 
-        <div class="timeline-item" data-step="3">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 100 100" width="80" height="80">
-              <circle cx="50" cy="50" r="45" fill="#c1011a" />
-              <circle
-                cx="50"
-                cy="50"
-                r="25"
-                fill="none"
-                stroke="#fff"
-                stroke-width="4"
+            <div class="deal-card" data-parallax="0.08">
+              <div
+                class="deal-accent"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--orange),
+                    var(--red)
+                  );
+                "
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop"
+                alt="Crispy Chicken Feast"
+                class="deal-image"
               />
-              <circle cx="50" cy="50" r="8" fill="#fff" />
-              <line
-                x1="50"
-                y1="50"
-                x2="50"
-                y2="30"
-                stroke="#fff"
-                stroke-width="4"
-                stroke-linecap="round"
-              />
-            </svg>
-          </div>
-          <div class="timeline-content">
-            <h3>Track Delivery in Real-Time</h3>
-            <p>
-              Watch your food journey from kitchen to doorstep. Get live updates
-              and accurate ETAs.
-            </p>
-          </div>
-        </div>
+              <h3>Crispy Chicken Feast</h3>
+              <p class="deal-price">₱349</p>
+              <p class="deal-desc">
+                Golden fried chicken with savory rice and gravy. A meal that
+                hits the spot every time!
+              </p>
+              <a href="#order" class="btn btn-primary">Order Now</a>
+            </div>
 
-        <div class="timeline-item" data-step="4">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 100 100" width="80" height="80">
-              <circle cx="50" cy="50" r="45" fill="#ffbd05" />
-              <path
-                d="M35,45 Q50,30 65,45 T65,55 Q50,70 35,55 T35,45"
-                fill="#c1011a"
+            <div class="deal-card" data-parallax="0.06">
+              <div
+                class="deal-accent"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--red),
+                    var(--yellow)
+                  );
+                "
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=400&fit=crop"
+                alt="Family Sharing Box"
+                class="deal-image"
               />
-              <circle cx="45" cy="48" r="5" fill="#fff" />
-              <circle cx="55" cy="48" r="5" fill="#fff" />
-            </svg>
+              <h3>Family Sharing Box</h3>
+              <p class="deal-price">₱899</p>
+              <p class="deal-desc">
+                A complete feast for the whole family! Includes burgers,
+                chicken, fries, and drinks for 4.
+              </p>
+              <a href="#order" class="btn btn-primary">Order Now</a>
+            </div>
           </div>
-          <div class="timeline-content">
-            <h3>Receive Your Food Fast</h3>
-            <p>
-              Hot, fresh, and on time! Enjoy your meal delivered with care and a
-              smile.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- App Features Section -->
-    <section class="features" id="features">
-      <h2 class="section-title">Why Choose Jollikod?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div
-            class="feature-icon"
-            style="background: linear-gradient(135deg, #ffbd05, #fe7002)"
-          >
-            <svg viewBox="0 0 100 100" width="50" height="50">
-              <path
-                d="M30,70 L50,30 L70,70 M35,60 L65,60"
-                stroke="#fff"
-                stroke-width="6"
-                fill="none"
-                stroke-linecap="round"
-              />
-            </svg>
-          </div>
-          <h3>Lightning Fast Delivery</h3>
-          <p>
-            Get your food in 30 minutes or less with our optimized delivery
-            network.
-          </p>
-        </div>
+        <!-- App Features Section -->
+        <section class="main-section features" id="features">
+          <h2 class="section-title">Why Choose Jollikod?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #ffbd05, #fe7002)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <path
+                    d="M30,70 L50,30 L70,70 M35,60 L65,60"
+                    stroke="#fff"
+                    stroke-width="6"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Lightning Fast Delivery</h3>
+              <p>
+                Get your food in 30 minutes or less with our optimized delivery
+                network.
+              </p>
+            </div>
 
-        <div class="feature-card">
-          <div
-            class="feature-icon"
-            style="background: linear-gradient(135deg, #c1011a, #fe7002)"
-          >
-            <svg viewBox="0 0 100 100" width="50" height="50">
-              <rect
-                x="25"
-                y="30"
-                width="50"
-                height="45"
-                rx="5"
-                stroke="#fff"
-                stroke-width="5"
-                fill="none"
-              />
-              <line
-                x1="40"
-                y1="50"
-                x2="60"
-                y2="50"
-                stroke="#fff"
-                stroke-width="5"
-              />
-              <line
-                x1="50"
-                y1="40"
-                x2="50"
-                y2="60"
-                stroke="#fff"
-                stroke-width="5"
-              />
-            </svg>
-          </div>
-          <h3>Easy Ordering</h3>
-          <p>
-            Simple, intuitive interface that makes ordering a breeze. Just a few
-            taps away!
-          </p>
-        </div>
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #c1011a, #fe7002)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <rect
+                    x="25"
+                    y="30"
+                    width="50"
+                    height="45"
+                    rx="5"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                  />
+                  <line
+                    x1="40"
+                    y1="50"
+                    x2="60"
+                    y2="50"
+                    stroke="#fff"
+                    stroke-width="5"
+                  />
+                  <line
+                    x1="50"
+                    y1="40"
+                    x2="50"
+                    y2="60"
+                    stroke="#fff"
+                    stroke-width="5"
+                  />
+                </svg>
+              </div>
+              <h3>Easy Ordering</h3>
+              <p>
+                Simple, intuitive interface that makes ordering a breeze. Just a
+                few taps away!
+              </p>
+            </div>
 
-        <div class="feature-card">
-          <div
-            class="feature-icon"
-            style="background: linear-gradient(135deg, #fe7002, #ffbd05)"
-          >
-            <svg viewBox="0 0 100 100" width="50" height="50">
-              <circle cx="50" cy="40" r="15" fill="#fff" />
-              <path
-                d="M50,60 L30,85 L40,85 L40,95 L60,95 L60,85 L70,85 Z"
-                fill="#fff"
-              />
-            </svg>
-          </div>
-          <h3>Branch Locator</h3>
-          <p>
-            Find the nearest Jollikod branch instantly with our smart location
-            system.
-          </p>
-        </div>
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #fe7002, #ffbd05)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <circle cx="50" cy="40" r="15" fill="#fff" />
+                  <path
+                    d="M50,60 L30,85 L40,85 L40,95 L60,95 L60,85 L70,85 Z"
+                    fill="#fff"
+                  />
+                </svg>
+              </div>
+              <h3>Branch Locator</h3>
+              <p>
+                Find the nearest Jollikod branch instantly with our smart
+                location system.
+              </p>
+            </div>
 
-        <div class="feature-card">
-          <div
-            class="feature-icon"
-            style="background: linear-gradient(135deg, #ffbd05, #c1011a)"
-          >
-            <svg viewBox="0 0 100 100" width="50" height="50">
-              <rect
-                x="30"
-                y="35"
-                width="40"
-                height="35"
-                rx="5"
-                stroke="#fff"
-                stroke-width="5"
-                fill="none"
-              />
-              <circle cx="45" cy="52" r="4" fill="#fff" />
-              <circle cx="55" cy="52" r="4" fill="#fff" />
-            </svg>
-          </div>
-          <h3>Secure Wallet</h3>
-          <p>
-            Safe and convenient payment options with our encrypted digital
-            wallet.
-          </p>
-        </div>
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #ffbd05, #c1011a)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <rect
+                    x="30"
+                    y="35"
+                    width="40"
+                    height="35"
+                    rx="5"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                  />
+                  <circle cx="45" cy="52" r="4" fill="#fff" />
+                  <circle cx="55" cy="52" r="4" fill="#fff" />
+                </svg>
+              </div>
+              <h3>Secure Wallet</h3>
+              <p>
+                Safe and convenient payment options with our encrypted digital
+                wallet.
+              </p>
+            </div>
 
-        <div class="feature-card">
-          <div
-            class="feature-icon"
-            style="background: linear-gradient(135deg, #c1011a, #ffbd05)"
-          >
-            <svg viewBox="0 0 100 100" width="50" height="50">
-              <circle
-                cx="50"
-                cy="50"
-                r="25"
-                fill="none"
-                stroke="#fff"
-                stroke-width="5"
-              />
-              <path
-                d="M50,30 L50,50 L65,65"
-                stroke="#fff"
-                stroke-width="5"
-                fill="none"
-                stroke-linecap="round"
-              />
-            </svg>
-          </div>
-          <h3>Order Tracking</h3>
-          <p>Real-time GPS tracking so you always know where your food is.</p>
-        </div>
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #c1011a, #ffbd05)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="25"
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="5"
+                  />
+                  <path
+                    d="M50,30 L50,50 L65,65"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Order Tracking</h3>
+              <p>
+                Real-time GPS tracking so you always know where your food is.
+              </p>
+            </div>
 
-        <div class="feature-card">
-          <div
-            class="feature-icon"
-            style="background: linear-gradient(135deg, #fe7002, #c1011a)"
-          >
-            <svg viewBox="0 0 100 100" width="50" height="50">
-              <circle
-                cx="50"
-                cy="35"
-                r="15"
-                stroke="#fff"
-                stroke-width="5"
-                fill="none"
-              />
-              <path d="M30,60 Q50,50 70,60 L70,80 Q50,90 30,80 Z" fill="#fff" />
-            </svg>
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #fe7002, #c1011a)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <circle
+                    cx="50"
+                    cy="35"
+                    r="15"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                  />
+                  <path
+                    d="M30,60 Q50,50 70,60 L70,80 Q50,90 30,80 Z"
+                    fill="#fff"
+                  />
+                </svg>
+              </div>
+              <h3>24/7 Customer Support</h3>
+              <p>We're always here to help. Chat with us anytime, anywhere.</p>
+            </div>
           </div>
-          <h3>24/7 Customer Support</h3>
-          <p>We're always here to help. Chat with us anytime, anywhere.</p>
-        </div>
-      </div>
-    </section>
+        </section>
+
+        <section class="main-section register" id="register">
+          <h2 class="section-title">Create an Account</h2>
+        </section>
+
+        <section class="main-section login" id="login">
+          <h2 class="section-title">Already have an account?</h2>
+        </section>
+      </main>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3 class="logo">Jollikod</h3>
-          <p>Fast food reimagined. Delivering happiness, one meal at a time.</p>
-          <div class="social-icons">
-            <a href="#" class="social-icon">
-              <svg
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                fill="currentColor"
-              >
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                />
-              </svg>
-            </a>
-            <a href="#" class="social-icon">
-              <svg
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                fill="currentColor"
-              >
-                <path
-                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-                />
-              </svg>
-            </a>
-            <a href="#" class="social-icon">
-              <svg
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                fill="currentColor"
-              >
-                <path
-                  d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"
-                />
-              </svg>
-            </a>
-          </div>
+          <a href="./home.html">
+            <img
+              src="../../assets/res/logos/Jollikod.svg"
+              alt="Jollikod"
+              class="logo"
+            />
+          </a>
         </div>
 
         <div class="footer-section">

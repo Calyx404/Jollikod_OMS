@@ -1,8 +1,11 @@
 <?php
-class Customer {
-    public static function findByEmail($pdo, $email) {
-        $stmt = $pdo->prepare("SELECT * FROM customers WHERE email = ?");
-        $stmt->execute([$email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+/**
+ * Represents User entity.
+ * Pure data holder.
+ */
+
+class User {
+    public $id;
+    public $username;
+    public $password_hash;
 }

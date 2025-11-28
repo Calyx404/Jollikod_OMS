@@ -1,30 +1,56 @@
 <?php
+namespace Core;
 
-$resource = $_GET['resource'] ?? ($_POST['resource'] ?? null);
-$action = $_GET['action'] ?? ($_POST['action'] ?? null);
-$method = $_SERVER['REQUEST_METHOD'];
+/**
+ * core/Router.php
+ *
+ * Purpose:
+ *  - Register and dispatch routes.
+ *
+ * Flow:
+ *  - Routes are stored in a static array keyed by method and path.
+ *  - Handler format: either a Closure/function or an array: [ [MiddlewareClass,...], ControllerClass, 'method' ]
+ *  - On dispatch: if middleware list provided, run each middleware::handle($request)
+ *  - Then instantiate controller and call method with $request parameter.
+ */
 
-$routesMap = [
-    'auth' => __DIR__ . '/../routes/auth.php',
-    'customers' => __DIR__ . '/../routes/customers.php',
-    'branches' => __DIR__ . '/../routes/branches.php',
-    'logout' => __DIR__ . '/../routes/logout.php',
-    'inventory_categories' => __DIR__ . '/../routes/inventory_categories.php',
-    'inventory_items' => __DIR__ . '/../routes/inventory_items.php',
-    'inventory_stocks' => __DIR__ . '/../routes/inventory_stocks.php',
-    // add more as we implement them
-];
+class Router {
+    private static $routes = [];
 
-if (!$resource && isset($_SERVER['PATH_INFO'])) {
-    $parts = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-    $resource = $parts[0] ?? null;
-    $action = $parts[1] ?? $action;
+    public function get($path, $handler) {
+        self::$routes['GET'][$path] = $handler;
+    }
+
+    public function post($path, $handler) {
+        self::$routes['POST'][$path] = $handler;
+    }
+
+    public function dispatch(Request $request) {
+        $method = $request->method;
+        $path = $request->uri;
+
+        $handler = self::$routes[$method][$path] ?? null;
+        if (!$handler) {
+            Response::json(['error' => 'Not Found'], 404);
+        }
+
+        if (is_array($handler)) {
+            [$middlewareList, $controllerClass, $methodName] = $handler;
+
+            if (is_array($middlewareList)) {
+                foreach ($middlewareList as $mw) {
+                    $mw::handle($request);
+                }
+            }
+
+            $controller = new $controllerClass();
+            return $controller->$methodName($request);
+        }
+
+        if (is_callable($handler)) {
+            return $handler($request);
+        }
+
+        Response::json(['error' => 'Invalid route handler'], 500);
+    }
 }
-
-if ($resource && isset($routesMap[$resource])) {
-    require $routesMap[$resource];
-    exit;
-}
-
-http_response_code(400);
-echo json_encode(['status'=>'error','msg'=>'invalid resource']);
