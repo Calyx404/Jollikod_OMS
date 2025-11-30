@@ -1,0 +1,39 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--pad-md) 0;
+  justify-content: space-between;
+  background: var(--color-primary);
+  gap: var(--pad-lg);
+
+  & .context {
+    flex: 1;
+    color: var(--neutral-100);
+    display: flex;
+    align-items: center;
+  }
+
+  & .actions {
+    display: flex;
+    gap: var(--pad-md);
+    align-items: center;
+
+    &.left {
+      align-items: flex-start;
+    }
+
+    &.right {
+      align-items: flex-end;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header .actions {
+    gap: var(--pad-sm);
+  }
+}

@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const frame = document.querySelector("#index-frame");
-  frame.setAttribute = ("src", "../pages/branch/menu.html");
+  navigate(null, "../pages/home/home.html");
 });
+
+function navigate(event, page) {
+  if (event) event.preventDefault();
+
+  const app = document.querySelector("#app");
+  app.src = page;
+
+  app.onload = () => {
+    try {
+      const innerTitle = app.contentDocument.title;
+      document.title = `Jollikod - ${innerTitle}`;
+    } catch (error) {
+      console.warn("Could not read iframe title:", error);
+    }
+  };
+}

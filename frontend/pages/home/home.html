@@ -4,21 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../../assets/css/home.css" />
-    <script src="../../assets/js/home.js"></script>
+    <title>Ikaw ang bida!</title>
+
+    <link rel="stylesheet" href="../../assets/css/pages/home/home.css" />
   </head>
-  <body>
-    <!-- Header -->
-    <header id="header">
-      <h1 class="logo"><a href="./home.html">Jollikod.</a></h1>
-      <div class="actions">
-        <a href="#login" class="btn btn-secondary">Log In</a>
-        <a href="#register" class="btn btn-primary">Register</a>
+  <body class="home">
+    <header class="header">
+      <div class="context">
+        <h1 class="logo"><a href="./home.html">Jollikod.</a></h1>
+      </div>
+      <div class="actions right">
+        <a href="./login.html" class="btn btn-secondary">
+          <span class="btn-label">Log In</span>
+          <i class="bx bxs-door-open btn-icon"></i>
+        </a>
+        <a href="./register.html" class="btn btn-primary"
+          ><span class="btn-label">Register</span>
+          <i class="bx bxs-user-plus btn-icon"></i>
+        </a>
       </div>
     </header>
 
-    <main id="main-container">
-      <main id="main">
+    <main class="main-container">
+      <main class="main">
         <!-- Hero Section -->
         <section class="main-section hero" id="hero">
           <div class="hero-bg"></div>
@@ -314,19 +322,10 @@
             </div>
           </div>
         </section>
-
-        <section class="main-section register" id="register">
-          <h2 class="section-title">Create an Account</h2>
-        </section>
-
-        <section class="main-section login" id="login">
-          <h2 class="section-title">Already have an account?</h2>
-        </section>
       </main>
     </main>
 
-    <!-- Footer -->
-    <footer id="footer">
+    <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
           <a href="./home.html">
@@ -339,8 +338,8 @@
         </div>
 
         <div class="footer-section">
-          <h4>About Jollikod</h4>
-          <ul>
+          <h4 class="section-title">About Jollikod</h4>
+          <ul class="section-links">
             <li><a href="#about">Our Story</a></li>
             <li><a href="#careers">Careers</a></li>
             <li><a href="#press">Press Kit</a></li>
@@ -349,8 +348,8 @@
         </div>
 
         <div class="footer-section">
-          <h4>For Partners</h4>
-          <ul>
+          <h4 class="section-title">For Partners</h4>
+          <ul class="section-links">
             <li><a href="#partner">Become a Partner</a></li>
             <li><a href="#driver">Become a Driver</a></li>
             <li><a href="#merchant">Merchant Portal</a></li>
@@ -359,8 +358,8 @@
         </div>
 
         <div class="footer-section">
-          <h4>Support</h4>
-          <ul>
+          <h4 class="section-title">Support</h4>
+          <ul class="section-links">
             <li><a href="#help">Help Center</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="#faq">FAQs</a></li>
@@ -370,13 +369,9 @@
       </div>
 
       <div class="footer-bottom">
-        <p>
-          &copy; 2024 Jollikod. All rights reserved. Made with blood, sweat, and
-          tears for Sir Airone.
-        </p>
+        &copy; 2024 Jollikod. All rights reserved. Made with blood, sweat, and
+        tears for Sir Airone.
       </div>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>

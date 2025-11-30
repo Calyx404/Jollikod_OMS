@@ -1,30 +1,7 @@
-@import "./global.css";
-
-#header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  & .logo {
-    color: var(--neutral-100);
-  }
-
-  & .actions {
-    flex: 1;
-    display: flex;
-    gap: var(--pad-md);
-    align-items: center;
-    justify-content: flex-end;
-  }
-}
-
-.main-section {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@import "../../global.css";
+@import "../../components/header.css";
+@import "../../components/footer.css";
+@import "../../components/main.css";
 
 /* Hero Section */
 .hero {
@@ -161,7 +138,7 @@
   background: var(--neutral-100);
 }
 
-.section-title {
+/* .section-title {
   text-align: center;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
@@ -174,7 +151,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
+} */
 
 .deals-grid {
   display: grid;
@@ -333,70 +310,8 @@
   font-size: 0.95rem;
 }
 
-/* Footer */
-#footer {
-  color: var(--neutral-100);
-  flex-direction: column;
-
-  & .footer-content {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 0 var(--pad-md);
-
-    & .footer-section {
-      min-width: 15%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--pad-lg);
-
-      & h4 {
-        width: 100%;
-      }
-
-      & ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: var(--pad-md);
-        width: 100%;
-
-        & a {
-          color: var(--neutral-200);
-
-          &:hover {
-            color: var(--neutral-100);
-            font-weight: 600;
-            padding-left: 5px;
-          }
-        }
-      }
-    }
-  }
-
-  & .footer-bottom {
-    text-align: center;
-    padding: var(--pad-md) 0 0;
-    border-top: 2px solid var(--neutral-200);
-    width: 100%;
-  }
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-  #header .actions {
-    gap: var(--pad-sm);
-  }
-
-  .btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
-
   .hero {
     padding: 6rem 1rem 3rem;
   }
@@ -422,28 +337,9 @@
   .features-grid {
     grid-template-columns: 1fr;
   }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--pad-xl);
-
-    & .footer-section {
-      align-items: center;
-      text-align: center;
-
-      & ul a:hover {
-        padding-left: 0;
-      }
-    }
-  }
 }
 
 @media (max-width: 480px) {
-  .logo {
-    font-size: 1.5rem;
-  }
-
   .section-title {
     font-size: 1.8rem;
   }

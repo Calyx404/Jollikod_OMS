@@ -1,0 +1,209 @@
+@import "../../global.css";
+@import "../../components/header.css";
+@import "../../components/main.css";
+@import "../../components/form.css";
+
+.main {
+  justify-content: center;
+}
+
+.forms-container {
+  position: relative;
+  width: 97.5%;
+  min-height: 80svh;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--neutral-200);
+
+  &.active {
+    & .context-container {
+      &::before {
+        left: 50%;
+      }
+
+      & .toggle-panel.toggle-left {
+        left: -50%;
+        transition-delay: 0.5s;
+      }
+
+      & .toggle-panel.toggle-right {
+        right: 0%;
+        transition-delay: 0.5s;
+      }
+    }
+
+    & .form-container {
+      right: 50%;
+
+      &#login-customer {
+        right: 0;
+      }
+
+      &#login-branch {
+        visibility: visible;
+        left: 0;
+      }
+    }
+  }
+
+  & .form-container {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: var(--neutral-200);
+    text-align: center;
+    padding: var(--pad-xl) 10%;
+    z-index: 100;
+    transition-delay: 0.5s;
+
+    &#login-customer {
+      right: 0;
+    }
+
+    &#login-branch {
+      visibility: hidden;
+      left: 0;
+    }
+  }
+
+  & .context-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -250%;
+      width: 300%;
+      height: 100%;
+      background: var(--color-primary);
+      border-radius: var(--radius-3xl);
+      z-index: 200;
+      box-shadow: inset 0 0 10rem rgba(0, 0, 0, 0.2);
+      transition: var(--transition-slow);
+    }
+
+    & .toggle-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: var(--pad-lg);
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      padding: var(--pad-xl) 10%;
+      color: var(--neutral-100);
+      z-index: 200;
+
+      &.toggle-left {
+        left: 0;
+        transition-delay: 0.5s;
+      }
+
+      &.toggle-right {
+        right: -50%;
+        transition-delay: 0.5s;
+      }
+
+      & img {
+        height: 12rem;
+        animation: hover 1.5s ease-in-out infinite alternate;
+      }
+
+      & button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+  100% {
+    transform: translateY(-10%) scale(1.1) rotate(5deg);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .forms-container {
+    & .form-container,
+    & .context-container .toggle-panel {
+      padding: var(--pad-xl) 6%;
+    }
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .forms-container {
+    &.active {
+      & .form-container {
+        bottom: 30%;
+      }
+
+      & .context-container {
+        &::before {
+          top: 70%;
+          left: unset;
+        }
+
+        & .toggle-panel {
+          &.toggle-left {
+            left: unset;
+            top: -30%;
+          }
+
+          &.toggle-right {
+            bottom: 0;
+          }
+        }
+      }
+    }
+
+    & .form-container {
+      width: 100%;
+      height: 70%;
+      /* background: black; */
+      bottom: 0;
+      top: unset;
+    }
+
+    & .context-container {
+      &::before {
+        top: -270%;
+        left: 0;
+        width: 100%;
+        height: 300%;
+      }
+      & .toggle-panel {
+        width: 100%;
+        height: 30%;
+        gap: var(--pad-sm);
+
+        & img {
+          visibility: hidden;
+          display: none;
+        }
+
+        & button {
+          width: unset;
+        }
+
+        &.toggle-right {
+          top: unset;
+          right: unset;
+          bottom: -30%;
+        }
+      }
+    }
+  }
+}
