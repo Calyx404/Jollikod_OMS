@@ -8,11 +8,8 @@
 
     <link rel="stylesheet" href="../../assets/css/pages/home/login.css" />
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
-      defer
-    ></script>
     <script src="../../assets/js/components/slider.js" defer></script>
+    <script src="../../assets/js/components/password.js" defer></script>
   </head>
 
   <body class="home">
@@ -67,7 +64,8 @@
                   placeholder="Password"
                   required
                 />
-                <i class="bx bxs-lock"></i>
+                <i class="bx bxs-eye-closed hide-password"></i>
+                <i class="bx bxs-eye show-password"></i>
               </div>
               <button type="submit" class="btn btn-primary">
                 Continue as Customer
@@ -97,7 +95,8 @@
                   placeholder="Password"
                   required
                 />
-                <i class="bx bxs-lock"></i>
+                <i class="bx bxs-eye-closed hide-password"></i>
+                <i class="bx bxs-eye show-password"></i>
               </div>
               <button type="submit" class="btn btn-primary">
                 Continue as Branch

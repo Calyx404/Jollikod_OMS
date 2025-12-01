@@ -17,12 +17,9 @@
   --color-secondary-dark: #cc9704;
 
   --neutral-100: #fdfbf7;
-  --neutral-200: #e8e6e3;
+  --neutral-200: #d8d8d7;
   --neutral-400: #5a5957;
   --neutral-800: #101828;
-
-  --gradient-primary: linear-gradient(135deg, #c1011a, #ffbd05);
-  --gradient-secondary: linear-gradient(135deg, #5a5957, #101828);
 
   --font-sans: "Nunito", system-ui, sans-serif;
 
@@ -52,13 +49,17 @@
   --transition-medium: all 0.5s ease;
   --transition-slow: all 1s ease;
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 1px 0 var(--neutral-400), 0 1.5px 4px var(--neutral-800);
+  --shadow-md: 0 1px 0 var(--neutral-400), 0 2px 6px var(--neutral-400),
+    0 4px 12px var(--neutral-800);
+  --shadow-lg: 0 1px 0 var(--neutral-400), 0 3px 10px var(--neutral-400),
+    0 8px 24px var(--neutral-800);
 
-  --cursor-default: url("../res/cursors/default.cur") 1 1, auto;
+  --cursor-default: url("../res/cursors/default.cur") 4 1, auto;
   --cursor-pointer: url("../res/cursors/pointer.cur") 11 0, pointer;
   --cursor-text: url("../res/cursors/text.cur") 15 15, text;
+  --cursor-grab: url("../res/cursors/grab.cur") 16 0, text;
+  --cursor-grabbing: url("../res/cursors/grabbing.cur") 7 8, text;
 }
 
 * {
@@ -76,11 +77,16 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--neutral-400);
+    background: var(--color-secondary);
+    cursor: var(--cursor-grab);
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--neutral-800);
+    background: var(--color-secondary-dark);
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    cursor: var(--cursor-grabbing);
   }
 }
 
@@ -97,12 +103,18 @@ body {
   scroll-behavior: smooth;
   position: relative;
   display: flex;
-  flex-direction: column;
   cursor: var(--cursor-default);
   scrollbar-gutter: stable both-edges;
 
   &.home {
     padding: 0 2%;
+    flex-direction: column;
+  }
+
+  &.branch,
+  &.customer {
+    flex-direction: row;
+    overflow: hidden;
   }
 }
 
@@ -141,7 +153,14 @@ a {
   color: inherit;
 }
 
+ul {
+  list-style: none;
+}
+
 i.bx,
+h1.logo,
+img.logo,
+.page-container,
 a,
 button {
   cursor: var(--cursor-pointer);

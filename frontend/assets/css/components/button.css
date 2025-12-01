@@ -12,14 +12,16 @@
   gap: var(--pad-sm);
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2), 0 3px 2px rgba(0, 0, 0, 0.1);
 
-  & .btn-label {
-    visibility: visible;
-    display: inline-block;
-  }
+  &:has(.btn-label + .btn-icon) {
+    & .btn-label {
+      visibility: visible;
+      display: inline-block;
+    }
 
-  & .btn-icon {
-    visibility: hidden;
-    display: none;
+    & .btn-icon {
+      visibility: hidden;
+      display: none;
+    }
   }
 
   &:hover {
@@ -42,7 +44,7 @@
     color: var(--neutral-100);
 
     & .btn-icon {
-      color: var(--neutral-100);
+      color: var(--neutral-100) !important;
     }
 
     &:hover {

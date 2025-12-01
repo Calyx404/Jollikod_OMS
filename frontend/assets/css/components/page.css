@@ -1,0 +1,32 @@
+.page {
+  flex: 1;
+  padding: 0 var(--pad-md) var(--pad-md);
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100svh;
+}
+
+.layer {
+  position: sticky;
+  top: 0;
+  right: -30%;
+  width: 30%;
+  height: 100%;
+  display: none;
+  visibility: hidden;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: var(--pad-md);
+  margin: 0 var(--pad-md);
+  transition: var(--transition-slow);
+
+  &.layer-active {
+    right: 0;
+    display: flex;
+    visibility: visible;
+  }
+}
+
+@media screen and (max-width: ) {
+}

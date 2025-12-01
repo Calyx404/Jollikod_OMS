@@ -8,10 +8,6 @@
 
     <link rel="stylesheet" href="../../assets/css/pages/home/register.css" />
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
-      defer
-    ></script>
     <script src="../../assets/js/components/slider.js" defer></script>
     <script src="../../assets/js/components/password.js" defer></script>
   </head>
@@ -38,6 +34,22 @@
           class="btn btn-primary"
         >
           <span class="btn-label">Log In</span>
+          <i class="bx bxs-door-open btn-icon"></i>
+        </button>
+
+        <!-- testing -->
+        <button
+          onclick="parent.navigate(event, '../pages/branch/menu.html')"
+          class="btn btn-secondary"
+        >
+          <span class="btn-label">Branch</span>
+          <i class="bx bxs-door-open btn-icon"></i>
+        </button>
+        <button
+          onclick="parent.navigate(event, '../pages/customer/menu.html')"
+          class="btn btn-primary"
+        >
+          <span class="btn-label">Customer</span>
           <i class="bx bxs-door-open btn-icon"></i>
         </button>
       </div>

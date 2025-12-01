@@ -1,11 +1,11 @@
 const slider = document.querySelector(".slider");
-const leftButton = document.querySelector(".slider-left-btn");
-const rightButton = document.querySelector(".slider-right-btn");
+const sliderLeftButton = document.querySelector(".slider-left-btn");
+const sliderRightButton = document.querySelector(".slider-right-btn");
 
-leftButton.addEventListener("click", () => {
+sliderLeftButton.addEventListener("click", () => {
   slider.classList.add("active");
 });
 
-rightButton.addEventListener("click", () => {
+sliderRightButton.addEventListener("click", () => {
   slider.classList.remove("active");
 });

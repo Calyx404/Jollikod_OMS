@@ -1,6 +1,5 @@
 h1.logo {
   color: var(--neutral-100);
-  cursor: pointer;
   background-clip: text;
 
   &:hover {
@@ -16,7 +15,6 @@ img.logo {
   aspect-ratio: 1/1;
   width: auto;
   height: 15rem;
-  cursor: pointer;
 
   &:hover {
     transform: scale(1.05) rotate(5deg);
