@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Get Started</title>
+    <title>Get Started!</title>
 
     <link rel="stylesheet" href="../../assets/css/pages/home/register.css" />
 
@@ -39,14 +39,14 @@
 
         <!-- testing -->
         <button
-          onclick="parent.navigate(event, '../pages/branch/menu.html')"
+          onclick="parent.navigate(event, '../pages/branch/index.html')"
           class="btn btn-secondary"
         >
           <span class="btn-label">Branch</span>
           <i class="bx bxs-door-open btn-icon"></i>
         </button>
         <button
-          onclick="parent.navigate(event, '../pages/customer/menu.html')"
+          onclick="parent.navigate(event, '../pages/customer/index.html')"
           class="btn btn-primary"
         >
           <span class="btn-label">Customer</span>
@@ -62,16 +62,42 @@
           <section class="form-container" id="register-customer">
             <form class="form" action="" method="post" autocomplete="off">
               <h2 class="title">Let's Get Started!</h2>
+
+              <div class="input-container">
+                <input
+                  type="text"
+                  name="name"
+                  id="customer-name"
+                  placeholder="Username"
+                  required
+                />
+                <i class="bx bxs-user"></i>
+              </div>
+
               <div class="input-container">
                 <input
                   type="email"
                   name="email"
                   id="customer-email"
-                  placeholder="Email"
+                  placeholder="your.email@gmail.com"
                   required
                 />
-                <i class="bx bxs-user"></i>
+                <i class="bx bxs-envelope"></i>
               </div>
+
+              <div class="input-container">
+                <input
+                  type="phone"
+                  name="phone"
+                  id="customer-phone"
+                  placeholder="+63-9XX-XXX-XXXX"
+                  maxlength="16"
+                  pattern="^\+63-9\d{2}-\d{3}-\d{4}$"
+                  required
+                />
+                <i class="bx bxs-phone"></i>
+              </div>
+
               <div class="input-container">
                 <input
                   type="password"
@@ -83,17 +109,7 @@
                 <i class="bx bxs-eye-closed hide-password"></i>
                 <i class="bx bxs-eye show-password"></i>
               </div>
-              <div class="input-container">
-                <input
-                  type="password"
-                  name="confirm-password"
-                  id="customer-confirm-password"
-                  placeholder="Confirm Password"
-                  required
-                />
-                <i class="bx bxs-eye-closed hide-password"></i>
-                <i class="bx bxs-eye show-password"></i>
-              </div>
+
               <button type="submit" class="btn btn-primary">
                 Register as Customer
               </button>
@@ -104,16 +120,42 @@
           <section class="form-container" id="register-branch">
             <form class="form" action="" method="post" autocomplete="off">
               <h2 class="title">Let's Get Started!</h2>
+
+              <div class="input-container">
+                <input
+                  type="text"
+                  name="name"
+                  id="branch-name"
+                  placeholder="Username"
+                  required
+                />
+                <i class="bx bxs-user"></i>
+              </div>
+
               <div class="input-container">
                 <input
                   type="email"
                   name="email"
                   id="branch-email"
-                  placeholder="Email"
+                  placeholder="your.email@gmail.com"
                   required
                 />
-                <i class="bx bxs-user"></i>
+                <i class="bx bxs-envelope"></i>
               </div>
+
+              <div class="input-container">
+                <input
+                  type="phone"
+                  name="phone"
+                  id="branch-phone"
+                  placeholder="+63-9XX-XXX-XXXX"
+                  maxlength="16"
+                  pattern="^\+63-9\d{2}-\d{3}-\d{4}$"
+                  required
+                />
+                <i class="bx bxs-phone"></i>
+              </div>
+
               <div class="input-container">
                 <input
                   type="password"
@@ -125,17 +167,7 @@
                 <i class="bx bxs-eye-closed hide-password"></i>
                 <i class="bx bxs-eye show-password"></i>
               </div>
-              <div class="input-container">
-                <input
-                  type="password"
-                  name="confirm-password"
-                  id="branch-confirm-password"
-                  placeholder="Confirm Password"
-                  required
-                />
-                <i class="bx bxs-eye-closed hide-password"></i>
-                <i class="bx bxs-eye show-password"></i>
-              </div>
+
               <button type="submit" class="btn btn-primary">
                 Register as Branch
               </button>
@@ -149,7 +181,7 @@
                 alt="Jollikod"
                 class="logo"
               />
-              <h6>Managing the restaurant?</h6>
+              <h4>Managing the restaurant?</h4>
               <button class="btn btn-secondary slider-left-btn">
                 Register as Branch
               </button>
@@ -160,7 +192,7 @@
                 alt="Jollikod"
                 class="logo"
               />
-              <h6>Just grabbing a bite?</h6>
+              <h4>Just grabbing a bite?</h4>
               <button class="btn btn-secondary slider-right-btn">
                 Register as Customer
               </button>

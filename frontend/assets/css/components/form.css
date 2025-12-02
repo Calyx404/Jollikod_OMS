@@ -1,6 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--pad-xl);
   width: 100%;
 
@@ -32,6 +33,7 @@
 
       &::placeholder {
         color: var(--neutral-400);
+        font-weight: 400;
       }
     }
 
@@ -43,6 +45,7 @@
     & .show-password {
       display: none;
       visibility: hidden;
+      color: var(--color-primary);
     }
 
     &.password-active {
@@ -62,5 +65,9 @@
 @media screen and (max-width: 834px) {
   .form {
     gap: var(--pad-md);
+
+    & .input-container {
+      padding: var(--size-sm) var(--pad-md);
+    }
   }
 }

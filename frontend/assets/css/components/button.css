@@ -44,7 +44,7 @@
     color: var(--neutral-100);
 
     & .btn-icon {
-      color: var(--neutral-100) !important;
+      color: var(--neutral-100);
     }
 
     &:hover {
@@ -54,10 +54,10 @@
 
   &.btn-secondary {
     background: var(--neutral-200);
-    color: var(--color-primary);
+    color: var(--neutral-800);
 
     & .btn-icon {
-      color: var(--color-primary);
+      color: var(--neutral-800);
     }
 
     &:hover {
@@ -73,7 +73,11 @@
 }
 
 @media screen and (max-width: 520px) {
-  .btn:has(.btn-icon) {
+  .btn {
+    padding: var(--size-xs);
+  }
+
+  .btn:has(.btn-label + .btn-icon) {
     & .btn-icon {
       visibility: visible;
       display: inline-block;

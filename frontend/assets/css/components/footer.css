@@ -65,9 +65,14 @@
     & .footer-section {
       align-items: center;
       text-align: center;
+      gap: var(--pad-sm);
 
-      & .section-links a:hover {
-        padding-left: 0;
+      & .section-links {
+        gap: var(--pad-xs);
+
+        & a:hover {
+          padding-left: 0;
+        }
       }
     }
   }

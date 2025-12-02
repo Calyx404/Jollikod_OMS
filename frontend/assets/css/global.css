@@ -49,17 +49,17 @@
   --transition-medium: all 0.5s ease;
   --transition-slow: all 1s ease;
 
-  --shadow-sm: 0 1px 0 var(--neutral-400), 0 1.5px 4px var(--neutral-800);
-  --shadow-md: 0 1px 0 var(--neutral-400), 0 2px 6px var(--neutral-400),
-    0 4px 12px var(--neutral-800);
-  --shadow-lg: 0 1px 0 var(--neutral-400), 0 3px 10px var(--neutral-400),
-    0 8px 24px var(--neutral-800);
+  --shadow-sm: 0 0 0 var(--neutral-800), 0 1px 5px var(--neutral-400);
+  --shadow-md: 0 1px 0 var(--neutral-800), 0 1px 5px var(--neutral-400),
+    0 2px 10px var(--neutral-400);
+  --shadow-lg: 0 1px 0 var(--neutral-800), 0 2px 5px var(--neutral-400),
+    0 5px 15px var(--neutral-400);
 
   --cursor-default: url("../res/cursors/default.cur") 4 1, auto;
   --cursor-pointer: url("../res/cursors/pointer.cur") 11 0, pointer;
   --cursor-text: url("../res/cursors/text.cur") 15 15, text;
-  --cursor-grab: url("../res/cursors/grab.cur") 16 0, text;
-  --cursor-grabbing: url("../res/cursors/grabbing.cur") 7 8, text;
+  --cursor-grab: url("../res/cursors/grab.cur") 16 0, grab;
+  --cursor-grabbing: url("../res/cursors/grabbing.cur") 7 8, grabbing;
 }
 
 * {
@@ -168,6 +168,7 @@ button {
 
 .input-container,
 input[type="text"],
+input[type="phone"],
 input[type="email"],
 input[type="password"],
 textarea {
@@ -175,6 +176,26 @@ textarea {
 }
 
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 1.15rem;
+  }
+
   body::-webkit-scrollbar {
     display: none;
   }

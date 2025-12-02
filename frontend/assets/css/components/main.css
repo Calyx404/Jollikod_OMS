@@ -1,8 +1,10 @@
 .main-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-lg);
   background: var(--neutral-100);
+  margin-bottom: var(--pad-md);
   overflow: hidden;
   width: 100%;
 
@@ -10,9 +12,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 86svh;
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     & .main-section {
       width: 100%;
@@ -21,6 +23,16 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+    }
+  }
+
+  &.main-scrollable {
+    max-height: 86svh;
+
+    & .main {
+      scrollbar-gutter: stable;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 }

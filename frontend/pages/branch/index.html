@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Find your Cravings!</title>
 
-    <link rel="stylesheet" href="../../assets/css/pages/branch/menu.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/branch/index.css" />
 
-    <script src="../../assets/js/components/layer.js" defer></script>
+    <script src="../../assets/js/components/navigation.js" defer></script>
   </head>
   <body class="branch">
     <nav class="navbar">
@@ -23,16 +23,12 @@
         <li
           class="page-container active-page"
           id="menu"
-          onclick="parent.navigate(event, '../pages/branch/menu.html')"
+          data-target="./menu.html"
         >
           <i class="bx bxs-dish page-icon"></i>
           <span class="page-label">Menu</span>
         </li>
-        <li
-          class="page-container"
-          id="activity"
-          onclick="parent.navigate(event, '../pages/branch/activity.html')"
-        >
+        <li class="page-container" id="activity" data-target="./activity.html">
           <i class="bx bxs-basket page-icon"></i>
           <span class="page-label">Activity</span>
         </li>
@@ -41,7 +37,7 @@
           <li
             class="page-container hide-page"
             id="more-collapsed"
-            onclick="parent.navigate(event, '../pages/branch/store.html')"
+            data-target="./store.html"
           >
             <!-- Change navigate to a modal -->
             <i class="bx bxs-circles page-icon"></i>
@@ -49,27 +45,19 @@
           </li>
 
           <ul class="pages-container" id="more-expanded">
-            <li
-              class="page-container"
-              id="store"
-              onclick="parent.navigate(event, '../pages/branch/store.html')"
-            >
+            <li class="page-container" id="store" data-target="./store.html">
               <i class="bx bxs-store page-icon"></i>
               <span class="page-label">Store</span>
             </li>
             <li
               class="page-container"
               id="customer"
-              onclick="parent.navigate(event, '../pages/branch/customer.html')"
+              data-target="./customer.html"
             >
               <i class="bx bxs-fork-spoon page-icon"></i>
               <span class="page-label">Customer</span>
             </li>
-            <li
-              class="page-container"
-              id="staff"
-              onclick="parent.navigate(event, '../pages/branch/staff.html')"
-            >
+            <li class="page-container" id="staff" data-target="./staff.html">
               <i class="bx bxs-chef-hat page-icon"></i>
               <span class="page-label">Staff</span>
             </li>
@@ -80,7 +68,7 @@
           <li
             class="page-container hide-page"
             id="account-collapsed"
-            onclick="parent.navigate(event, '../pages/branch/account.html')"
+            data-target="./account.html"
           >
             <i class="bx bxs-user page-icon"></i>
             <span class="page-label">Account</span>
@@ -90,7 +78,7 @@
             <li
               class="page-container"
               id="settings"
-              onclick="parent.navigate(event, '../pages/branch/settings.html')"
+              data-target="./settings.html"
             >
               <i class="bx bxs-cog page-icon"></i>
               <span class="page-label">Settings</span>
@@ -101,7 +89,7 @@
             <li
               class="page-container"
               id="profile"
-              onclick="parent.navigate(event, '../pages/branch/account.html')"
+              data-target="./account.html"
             >
               <i class="bx bxs-user page-icon"></i>
               <span class="page-label">Profile</span>
@@ -111,52 +99,11 @@
       </ul>
     </nav>
 
-    <main class="page">
-      <header class="header header-page">
-        <div class="context">
-          <h1>
-            <a onclick="parent.navigate(event, '../pages/home/home.html')"
-              >Menu</a
-            >
-          </h1>
-        </div>
-        <div class="actions right">
-          <button class="btn btn-primary layer-open">
-            <span class="btn-label">Add Item</span>
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
-        </div>
-      </header>
-
-      <main class="main-container main-scrollable">
-        <main class="main">Arf</main>
-      </main>
-    </main>
-
-    <aside class="layer">
-      <header class="header header-page">
-        <div class="actions left">
-          <button class="btn btn-secondary layer-close" title="Close Panel">
-            <i class="bx bxs-dock-right-arrow btn-icon"></i>
-          </button>
-        </div>
-        <div class="context">
-          <h1>Add Item</h1>
-        </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.html')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
-        </div>
-      </header>
-
-      <main class="main-container main-scrollable">
-        <main class="main">Meow</main>
-      </main>
-    </aside>
+    <iframe
+      id="page-frame"
+      frameborder="0"
+      class="frame"
+      src="./menu.html"
+    ></iframe>
   </body>
 </html>

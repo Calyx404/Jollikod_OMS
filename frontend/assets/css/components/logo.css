@@ -3,7 +3,7 @@ h1.logo {
   background-clip: text;
 
   &:hover {
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.65));
   }
 
   &:active {
@@ -18,7 +18,7 @@ img.logo {
 
   &:hover {
     transform: scale(1.05) rotate(5deg);
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.65));
   }
 
   &:active {
