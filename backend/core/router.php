@@ -1,56 +1,32 @@
 <?php
-namespace Core;
 
-/**
- * core/Router.php
- *
- * Purpose:
- *  - Register and dispatch routes.
- *
- * Flow:
- *  - Routes are stored in a static array keyed by method and path.
- *  - Handler format: either a Closure/function or an array: [ [MiddlewareClass,...], ControllerClass, 'method' ]
- *  - On dispatch: if middleware list provided, run each middleware::handle($request)
- *  - Then instantiate controller and call method with $request parameter.
- */
+class Router
+{
+    private array $routes = [];
 
-class Router {
-    private static $routes = [];
-
-    public function get($path, $handler) {
-        self::$routes['GET'][$path] = $handler;
+    public function register(string $method, string $path, callable|array $handler)
+    {
+        $this->routes[strtoupper($method)][$path] = $handler;
     }
 
-    public function post($path, $handler) {
-        self::$routes['POST'][$path] = $handler;
-    }
+    public function dispatch()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        $uri = strtok($_SERVER['REQUEST_URI'], '?');
 
-    public function dispatch(Request $request) {
-        $method = $request->method;
-        $path = $request->uri;
+        if (isset($this->routes[$method][$uri])) {
+            $handler = $this->routes[$method][$uri];
 
-        $handler = self::$routes[$method][$path] ?? null;
-        if (!$handler) {
-            Response::json(['error' => 'Not Found'], 404);
-        }
-
-        if (is_array($handler)) {
-            [$middlewareList, $controllerClass, $methodName] = $handler;
-
-            if (is_array($middlewareList)) {
-                foreach ($middlewareList as $mw) {
-                    $mw::handle($request);
-                }
+            if (is_array($handler)) {
+                $controller = new $handler[0];
+                $methodName = $handler[1];
+                return $controller->$methodName(new Request(), new Response());
             }
 
-            $controller = new $controllerClass();
-            return $controller->$methodName($request);
+            return call_user_func($handler, new Request(), new Response());
         }
 
-        if (is_callable($handler)) {
-            return $handler($request);
-        }
-
-        Response::json(['error' => 'Invalid route handler'], 500);
+        http_response_code(404);
+        echo json_encode(['error' => 'Route not found']);
     }
 }

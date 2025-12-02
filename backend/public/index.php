@@ -1,20 +1,31 @@
 <?php
 
+// Autoloading
 spl_autoload_register(function ($class) {
-    $file = __DIR__ . '/../' . str_replace('\\', '/', $class) . '.php';
-    if (file_exists($file)) {
-        require $file;
+    $paths = [
+        __DIR__ . '/../core/',
+        __DIR__ . '/../app/controllers/',
+        __DIR__ . '/../app/models/',
+        __DIR__ . '/../app/services/',
+        __DIR__ . '/../app/utils/',
+        __DIR__ . '/../app/middlewares/'
+    ];
+
+    foreach ($paths as $path) {
+        $file = $path . $class . ".php";
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
     }
 });
 
-use Core\Request;
-use Core\Router;
+// Load Config + App
+$config = require __DIR__ . '/../config/config.php';
+$app = new App($config);
 
-$request = Request::capture();
-$router = new Router();
+// Load Routes
+require __DIR__ . '/../app/routes/api.php';
 
-foreach (glob(__DIR__ . '/../routes/*.php') as $routeFile) {
-    require $routeFile;
-}
-
-$router->dispatch($request);
+// Run App
+$app->run();
