@@ -1,11 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu</title>
-  </head>
-  <body>
-    Customer
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Jollikod Customer</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo"><img src="../assets/logo.png" alt="Logo"></div>
+    <div class="logo-expanded"><img src="../assets/logolable.png" alt="Logo"></div>
+    <ul class="nav-links">
+      <li class="menu-link active-link"><a href="menu.html"><i class="fas fa-utensils"></i><span>Menu</span></a></li>
+      <li class="activity-link"><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity</span></a></li>
+      <li class="more more-link">
+        <a href="#"><i class="fas fa-ellipsis-h"></i><span>More</span><i class="fas fa-chevron-right dropdown-icon"></i></a>
+        <ul class="submenu">
+          <li><a href="helpdesk.html"><span>Helpdesk</span></a></li>
+          <li><a href="feedback.html"><span>Feedback</span></a></li>
+        </ul>
+      </li>
+      <li class="bottom-link"><a href="account.html"><i class="fas fa-user-circle"></i><span>Account</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main-body">
+
+    <!-- HEADER: Location | Wallet | Cart -->
+    <div class="customer-header-kpi">
+      <div class="kpi-card location-card">
+        <div class="kpi-label">Your Location</div>
+        <div class="kpi-row">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="kpi-value">Baguio City</div>
+        </div>
+      </div>
+
+      <div class="right-kpi-group">
+        <div class="kpi-card wallet-card">
+          <div class="kpi-label">Wallet Balance</div>
+          <div class="kpi-row">
+            <i class="fas fa-wallet"></i>
+            <div class="kpi-value big">₱1,250.00</div>
+          </div>
+        </div>
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">3</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MENU PAGE -->
+    <section class="content-box menu-page">
+
+      <!-- 1. Title -->
+      <div class="menu-header">
+        <h1>Jollikod Menu</h1>
+      </div>
+
+      <!-- 2. Popular This Week -->
+      <div class="popular-section">
+        <h2>Popular This Week</h2>
+        <div class="menu-grid">
+          <div class="menu-card popular" data-name="Jolikod Classic Meal" data-price="180" data-desc="Your craving is answered with this timeless trio: a truly classic, satisfying burger and a generous serving of perfectly seasoned fries, all washed down with your choice of beverage." data-img="../assets/jolikod-classic-meal.jpg">
+            <img src="../assets/JOLIKOD MENU/COMBO MEALS/Jolikod Classic Meal.png" alt="Jolikod Classic Meal">
+            <div class="info"><h3>Jolikod Classic Meal</h3><div class="price">₱180.00</div></div>
+          </div>
+          <div class="menu-card popular" data-name="Fire Crunch Chicken Meal" data-price="130" data-desc="Prepare your palate for the ultimate heat and crunch experience, centered around a premium chicken fillet hand-battered and fried until flawlessly crispy, tossed in a vibrant chili glaze. This thrilling sandwich is paired with our famous golden fries and a chilled drink to complete your satisfying meal." data-img="../assets/fire-crunch-chicken-meal.jpg">
+            <img src="../assets/JOLIKOD MENU/COMBO MEALS/Fire Crunch Chicken Meal .png" alt="Fire Crunch Chicken Meal">
+            <div class="info"><h3>Fire Crunch Chicken Meal</h3><div class="price">₱130.00</div></div>
+          </div>
+          <div class="menu-card popular" data-name="Double Stack Meal" data-price="150" data-desc="For serious appetites, this meal is served with two perfectly seared, juicy beef patties stacked high with melted cheese and fresh garden toppings on a soft brioche bun. This robust burger is completed by our delicious crispy fries and your favorite refreshing drink." data-img="../assets/double-stack-meal.jpg">
+            <img src="../assets/JOLIKOD MENU/COMBO MEALS/Double Stack Meal.png" alt="Double Stack Meal">
+            <div class="info"><h3>Double Stack Meal</h3><div class="price">₱150.00</div></div>
+          </div>
+          <div class="menu-card popular" data-name="Beef Tapa Rice Meal Combo" data-price="160" data-desc="Start your day with our savory Beef Tapa, thinly sliced and marinated to perfection, served alongside fragrant, crispy garlic rice and a perfectly cooked fried egg. This beloved Filipino classic comes complete with a refreshing drink." data-img="../assets/beef-tapa-rice-meal-combo.jpg">
+            <img src="../assets/JOLIKOD MENU/COMBO MEALS/Beef Tapa Rice Meal Combo.png" alt="Beef Tapa Rice Meal Combo">
+            <div class="info"><h3>Beef Tapa Rice Meal Combo</h3><div class="price">₱160.00</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Category Tabs -->
+      <div class="category-tabs">
+        <div class="tab active" data-category="combo">Combo Meals</div>
+        <div class="tab" data-category="burgers">Burgers</div>
+        <div class="tab" data-category="chicken">Chicken</div>
+        <div class="tab" data-category="sides">Sides</div>
+        <div class="tab" data-category="drinks">Drinks</div>
+        <div class="tab" data-category="desserts">Desserts</div>
+        <div class="tab" data-category="breakfast">Breakfast</div>
+      </div>
+
+      <!-- 4. Category Content -->
+      <div class="category-content">
+
+        <!-- Combo Meals -->
+        <div class="category active" id="combo">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Jolikod Classic Meal" data-price="180" data-desc="Your craving is answered with this timeless trio: a truly classic, satisfying burger and a generous serving of perfectly seasoned fries, all washed down with your choice of beverage." data-img="../assets/jolikod-classic-meal.jpg">
+              <img src="../assets/jolikod-classic-meal.jpg" alt="Jolikod Classic Meal">
+              <div class="info"><h3>Jolikod Classic Meal</h3><div class="price">₱180.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Fire Crunch Chicken Meal" data-price="130" data-desc="Prepare your palate for the ultimate heat and crunch experience, centered around a premium chicken fillet hand-battered and fried until flawlessly crispy, tossed in a vibrant chili glaze. This thrilling sandwich is paired with our famous golden fries and a chilled drink to complete your satisfying meal." data-img="../assets/fire-crunch-chicken-meal.jpg">
+              <img src="../assets/fire-crunch-chicken-meal.jpg" alt="Fire Crunch Chicken Meal">
+              <div class="info"><h3>Fire Crunch Chicken Meal</h3><div class="price">₱130.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Double Stack Meal" data-price="150" data-desc="For serious appetites, this meal is served with two perfectly seared, juicy beef patties stacked high with melted cheese and fresh garden toppings on a soft brioche bun. This robust burger is completed by our delicious crispy fries and your favorite refreshing drink." data-img="../assets/double-stack-meal.jpg">
+              <img src="../assets/double-stack-meal.jpg" alt="Double Stack Meal">
+              <div class="info"><h3>Double Stack Meal</h3><div class="price">₱150.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Beef Tapa Rice Meal Combo" data-price="160" data-desc="Start your day with our savory Beef Tapa, thinly sliced and marinated to perfection, served alongside fragrant, crispy garlic rice and a perfectly cooked fried egg. This beloved Filipino classic comes complete with a refreshing drink." data-img="../assets/beef-tapa-rice-meal-combo.jpg">
+              <img src="../assets/beef-tapa-rice-meal-combo.jpg" alt="Beef Tapa Rice Meal Combo">
+              <div class="info"><h3>Beef Tapa Rice Meal Combo</h3><div class="price">₱160.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Sweet & Sour Chicken Combo" data-price="129" data-desc="Taste the perfect balance of flavor with our tender chicken bites, expertly fried until crisp and coated in a vibrant, zesty sweet and sour sauce, served over a generous portion of fluffy, freshly steamed rice." data-img="../assets/sweet-&-sour-chicken-combo.jpg">
+              <img src="../assets/sweet-&-sour-chicken-combo.jpg" alt="Sweet & Sour Chicken Combo">
+              <div class="info"><h3>Sweet & Sour Chicken Combo</h3><div class="price">₱129.00</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burgers -->
+        <div class="category" id="burgers">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Joli-Beef Classic Burger" data-price="80" data-desc="Experience the timeless satisfaction of our signature classic, featuring a flame-grilled, exceptionally juicy beef patty cooked to perfection and nestled on a soft, perfectly toasted bun. It is completed with crisp lettuce, fresh tomatoes, and a generous layer of our creamy special house sauce." data-img="../assets/joli-beef-classic-burger.jpg">
+              <img src="../assets/joli-beef-classic-burger.jpg" alt="Joli-Beef Classic Burger">
+              <div class="info"><h3>Joli-Beef Classic Burger</h3><div class="price">₱80.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Double Stack Joli-Beef" data-price="130" data-desc="Satisfy your hunger with this impressive stack: two signature Joli-Beef patties, perfectly grilled and topped with melted cheese, crisp lettuce, and our creamy house sauce, delivering maximum flavor in every rich bite." data-img="../assets/double-stack-joli-beef.jpg">
+              <img src="../assets/double-stack-joli-beef.jpg" alt="Double Stack Joli-Beef">
+              <div class="info"><h3>Double Stack Joli-Beef</h3><div class="price">₱130.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Golden Crispy Chicken burger" data-price="85" data-desc="Enjoy the satisfying crunch of a superior chicken sandwich, built around a thick, premium chicken fillet that is seasoned and fried to a perfect golden crisp. This exceptional fillet is served simply with cool, fresh lettuce and creamy mayonnaise on a soft, toasted sesame bun." data-img="../assets/golden-crispy-chicken-burger.jpg">
+              <img src="../assets/golden-crispy-chicken-burger.jpg" alt="Golden Crispy Chicken burger">
+              <div class="info"><h3>Golden Crispy Chicken burger</h3><div class="price">₱85.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Joli BBQ Beef Melt" data-price="90" data-desc="Savor the rich, smoky flavors of our Joli BBQ Beef Melt, featuring tender, sliced beef smothered in our sweet and tangy signature BBQ sauce, topped with melted cheese, and served on a toasted bun." data-img="../assets/joli-bbq-beef-melt.jpg">
+              <img src="../assets/joli-bbq-beef-melt.jpg" alt="Joli BBQ Beef Melt">
+              <div class="info"><h3>Joli BBQ Beef Melt</h3><div class="price">₱90.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Burger Party Pack" data-price="550" data-desc="Perfect for sharing, the Burger Party Pack features five juicy mini-burgers each a taste of our classic quality paired with a generous portion of our golden, crispy fries and crunchy onion rings, plus three regular drinks." data-img="../assets/burger-party-pack.jpg">
+              <img src="../assets/burger-party-pack.jpg" alt="Burger Party Pack">
+              <div class="info"><h3>Burger Party Pack</h3><div class="price">₱550.00</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chicken -->
+        <div class="category" id="chicken">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Joli Crunch Tender" data-price="140" data-desc="These aren't your average tenders; they are made from premium, all-white meat chicken, seasoned expertly and fried to an unbeatable, satisfying crunch. Perfect for dipping, these juicy strips are tender on the inside and irresistibly crispy on the outside." data-img="../assets/joli-crunch-tender.jpg">
+              <img src="../assets/joli-crunch-tender.jpg" alt="Joli Crunch Tender">
+              <div class="info"><h3>Joli Crunch Tender</h3><div class="price">₱140.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Mini Joli Bites" data-price="170" data-desc="These are not ordinary nuggets; our Mini Joli Bites are made from 100% all-white meat chicken, delicately seasoned and cooked until they achieve a flawless, golden-brown crispness. They are the perfect bite-sized snack or appetizer, offering a burst of juicy chicken flavor in every tender piece." data-img="../assets/mini-joli-bites.jpg">
+              <img src="../assets/mini-joli-bites.jpg" alt="Mini Joli Bites">
+              <div class="info"><h3>Mini Joli Bites</h3><div class="price">₱170.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Joli Family Bucket (6 pcs)" data-price="399" data-desc="Perfect for gatherings, the Joli Family Bucket contains several pieces of our signature chicken, each piece hand-battered and fried to achieve an incredibly crunchy, golden exterior and moist, flavorful meat inside. It's the ultimate crowd-pleaser, providing a delicious and satisfying centerpiece for any family meal." data-img="../assets/joli-family-bucket-6-pcs.jpg">
+              <img src="../assets/joli-family-bucket-6-pcs.jpg" alt="Joli Family Bucket (6 pcs)">
+              <div class="info"><h3>Joli Family Bucket (6 pcs)</h3><div class="price">₱399.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Flame Kick Wings" data-price="160" data-desc="Our Flame Kick Wings are a spicy sensation, featuring juicy, perfectly cooked chicken wings tossed in a signature sauce that delivers a powerful, smoky-sweet heat with a fiery kick. These intensely flavorful wings are guaranteed to satisfy any craving for heat and make the perfect appetizer or side." data-img="../assets/flame-kick-wings.jpg">
+              <img src="../assets/flame-kick-wings.jpg" alt="Flame Kick Wings">
+              <div class="info"><h3>Flame Kick Wings</h3><div class="price">₱160.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Joli Family Bucket (8 pcs)" data-price="529" data-desc="Perfect for gatherings, the Joli Family Bucket contains several pieces of our signature chicken, each piece hand-battered and fried to achieve an incredibly crunchy, golden exterior and moist, flavorful meat inside. It's the ultimate crowd-pleaser, providing a delicious and satisfying centerpiece for any family meal." data-img="../assets/joli-family-bucket-8-pcs.jpg">
+              <img src="../assets/joli-family-bucket-8-pcs.jpg" alt="Joli Family Bucket (8 pcs)">
+              <div class="info"><h3>Joli Family Bucket (8 pcs)</h3><div class="price">₱529.00</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sides -->
+        <div class="category" id="sides">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Golden Fries" data-price="50" data-desc="Experience the perfect side with our Golden Fries, which are cut thick and cooked until they reach a beautiful, crisp exterior and a light, fluffy interior. They are seasoned lightly with sea salt and make the perfect crunchy, savory companion to any burger or chicken meal." data-img="../assets/golden-fries.jpg">
+              <img src="../assets/golden-fries.jpg" alt="Golden Fries">
+              <div class="info"><h3>Golden Fries</h3><div class="price">₱50.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Crunchy Onion Loops" data-price="50" data-desc="Enjoy a superior take on a classic side with our Crunchy Onion Loops, featuring thick, sweet onion rings dipped in a proprietary seasoned batter. They are fried to a golden-brown perfection, delivering an unbelievably satisfying crunch and savory flavor in every bite." data-img="../assets/crunchy-onion-loops.jpg">
+              <img src="../assets/crunchy-onion-loops.jpg" alt="Crunchy Onion Loops">
+              <div class="info"><h3>Crunchy Onion Loops</h3><div class="price">₱50.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Cheese Fries" data-price="79" data-desc="Elevate your side experience with our classic golden fries, generously smothered in a rich, creamy, and savory aged cheddar cheese sauce that melts beautifully over the warm potatoes. This satisfying, comforting combination is the ultimate cheesy indulgence and the perfect add-on to any meal." data-img="../assets/cheese-fries.jpg">
+              <img src="../assets/cheese-fries.jpg" alt="Cheese Fries">
+              <div class="info"><h3>Cheese Fries</h3><div class="price">₱79.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Coleslaw" data-price="35" data-desc="Our Coleslaw is a refreshing, crisp counterpoint to any rich meal, featuring a vibrant blend of freshly shredded cabbage and carrots cut daily for maximum crunch. Everything is lightly tossed in our signature creamy, tangy dressing that delivers the perfect balance of sweetness and acidity." data-img="../assets/coleslaw.jpg">
+              <img src="../assets/coleslaw.jpg" alt="Coleslaw">
+              <div class="info"><h3>Coleslaw</h3><div class="price">₱35.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Garlic Rice" data-price="25" data-desc="Enhance your meal with our wonderfully aromatic Garlic Rice, made with high-quality grains cooked until fluffy and lightly fried with crispy, golden brown pieces of sautéed garlic. This signature side is bursting with flavor and serves as the perfect savory pairing for our beef and chicken entrees." data-img="../assets/garlic-rice.jpg">
+              <img src="../assets/garlic-rice.jpg" alt="Garlic Rice">
+              <div class="info"><h3>Garlic Rice</h3><div class="price">₱25.00</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drinks -->
+        <div class="category" id="drinks">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Soda Fountain Drink" data-price="40" data-desc="Quench your thirst instantly with our premium Soda Fountain Drink, serving your favorite ice-cold, perfectly carbonated beverage with a burst of effervescent refreshment. The ideal crisp and fizzy accompaniment to cut through the richness of any meal." data-img="../assets/soda-fountain-drink.jpg">
+              <img src="../assets/soda-fountain-drink.jpg" alt="Soda Fountain Drink">
+              <div class="info"><h3>Soda Fountain Drink</h3><div class="price">₱40.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Fresh Lemon Twist" data-price="50" data-desc="Recharge with the bright, natural taste of our Fresh Lemon Twist, made with real lemon juice that is freshly squeezed and subtly sweetened to achieve the perfect tangy balance. This invigorating beverage is served over ice with a fresh lemon slice, offering a clean and refreshing finish to your meal." data-img="../assets/fresh-lemon-twist.jpg">
+              <img src="../assets/fresh-lemon-twist.jpg" alt="Fresh Lemon Twist">
+              <div class="info"><h3>Fresh Lemon Twist</h3><div class="price">₱50.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Lemonyo" data-price="50" data-desc="Indulge in the signature taste of Lemonyo, a perfectly balanced concoction that features the intense brightness of freshly squeezed lemons layered with a subtle, smooth sweetness. This unique, chilled beverage offers a truly invigorating and delightfully tart refreshment you won't find anywhere else." data-img="../assets/lemonyo.jpg">
+              <img src="../assets/lemonyo.jpg" alt="Lemonyo">
+              <div class="info"><h3>Lemonyo</h3><div class="price">₱50.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Root beer" data-price="40" data-desc="Enjoy the classic, timeless flavor of our Root Beer, a deeply rich and creamy soda that delivers its distinctive notes of vanilla, sassafras, and sweet herbs. This icy, effervescent drink is the perfect comforting accompaniment for any of our savory burgers and sides." data-img="../assets/root-beer.jpg">
+              <img src="../assets/root-beer.jpg" alt="Root beer">
+              <div class="info"><h3>Root beer</h3><div class="price">₱40.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Iced Tea" data-price="35" data-desc="Cool down with our Iced Tea, freshly brewed daily to ensure a rich, authentic flavor that is both subtly sweet and perfectly refreshing. Served chilled over ice, this crisp beverage is the ideal way to complement and cleanse your palate during any meal." data-img="../assets/iced-tea.jpg">
+              <img src="../assets/iced-tea.jpg" alt="Iced Tea">
+              <div class="info"><h3>Iced Tea</h3><div class="price">₱35.00</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="category" id="desserts">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Joli Soft Serve Cup" data-price="60" data-desc="Treat yourself to our signature Joli Soft Serve, a velvety smooth and intensely creamy vanilla ice cream that melts gently on your tongue, offering the ultimate sweet indulgence. Perfectly swirled and served chilled in a cup, it's a simple, classic dessert guaranteed to satisfy your sweet tooth." data-img="../assets/joli-soft-serve-cup.jpg">
+              <img src="../assets/joli-soft-serve-cup.jpg" alt="Joli Soft Serve Cup">
+              <div class="info"><h3>Joli Soft Serve Cup</h3><div class="price">₱60.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Choco Swirl Shake" data-price="70" data-desc="Experience pure decadence with our Choco Swirl Shake, a thick, hand-spun milkshake made with premium ice cream and rich, dark chocolate syrup swirled throughout. This smooth, luxurious treat offers an intensely satisfying, chilled chocolate flavor in every sip." data-img="../assets/choco-swirl-shake.jpg">
+              <img src="../assets/choco-swirl-shake.jpg" alt="Choco Swirl Shake">
+              <div class="info"><h3>Choco Swirl Shake</h3><div class="price">₱70.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Apple Crunch Pocket Pie" data-price="80" data-desc="Enjoy a warm, flaky, hand-held dessert featuring a golden, buttery crust generously filled with tender, cinnamon-spiced apple slices baked to perfection. Each pocket delivers a delightful combination of soft, warm fruit and irresistible crunch, making it the perfect satisfying sweet treat." data-img="../assets/apple-crunch-pocket-pie.jpg">
+              <img src="../assets/apple-crunch-pocket-pie.jpg" alt="Apple Crunch Pocket Pie">
+              <div class="info"><h3>Apple Crunch Pocket Pie</h3><div class="price">₱80.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Hot Fudge Sundae" data-price="49" data-desc="Indulge in our classic Hot Fudge Sundae, featuring a tall swirl of velvety smooth vanilla soft serve generously draped in a thick, warm, and intensely rich chocolate fudge sauce. This decadent treat is finished with a sprinkle of crunchy nuts and a bright red cherry, offering layers of temperature and texture." data-img="../assets/hot-fudge-sundae.jpg">
+              <img src="../assets/hot-fudge-sundae.jpg" alt="Hot Fudge Sundae">
+              <div class="info"><h3>Hot Fudge Sundae</h3><div class="price">₱49.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Caramel Sundae" data-price="49" data-desc="Savor the perfect blend of sweet and creamy with our luxurious Caramel Sundae, starting with silky-smooth vanilla soft serve as the perfect base. It is then generously topped with a rich, buttery, and warm caramel sauce that delivers pure indulgence in every spoonful." data-img="../assets/caramel-sundae.jpg">
+              <img src="../assets/caramel-sundae.jpg" alt="Caramel Sundae">
+              <div class="info"><h3>Caramel Sundae</h3><div class="price">₱49.00</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakfast -->
+        <div class="category" id="breakfast">
+          <div class="menu-grid">
+            <div class="menu-card" data-name="Hot Brewed Coffee" data-price="40" data-desc="Start your morning right with a cup of our Hot Brewed Coffee, featuring premium, freshly ground beans expertly brewed to deliver a rich, deeply aromatic, and invigorating flavor. This perfectly warm cup offers a smooth finish and the ideal energy boost to kickstart your day." data-img="../assets/hot-brewed-coffee.jpg">
+              <img src="../assets/hot-brewed-coffee.jpg" alt="Hot Brewed Coffee">
+              <div class="info"><h3>Hot Brewed Coffee</h3><div class="price">₱40.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Iced Brewed Coffee" data-price="50" data-desc="Enjoy a cool and refreshing start to your morning with our Iced Brewed Coffee, featuring the same rich, premium blend as our hot brew, perfectly chilled and poured over ice. This crisp, invigorating beverage is a smooth, strong way to enjoy your coffee, perfect for any time of day." data-img="../assets/iced-brewed-coffee.jpg">
+              <img src="../assets/iced-brewed-coffee.jpg" alt="Iced Brewed Coffee">
+              <div class="info"><h3>Iced Brewed Coffee</h3><div class="price">₱50.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Pancakes & Coffee Combo" data-price="120" data-desc="Indulge in the quintessential comfort breakfast with three fluffy, golden-brown pancakes, lightly griddled and served with butter and warm maple syrup. This satisfying morning staple is perfectly paired with a freshly brewed cup of our premium, rich coffee." data-img="../assets/pancakes-&-coffee-combo.jpg">
+              <img src="../assets/pancakes-&-coffee-combo.jpg" alt="Pancakes & Coffee Combo">
+              <div class="info"><h3>Pancakes & Coffee Combo</h3><div class="price">₱120.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Hotsilog" data-price="110" data-desc="A satisfying and savory combination that delivers robust flavor to start your day. It features juicy, sweet-savory hotdogs served alongside a generous portion of aromatic garlic fried rice and a perfectly cooked fried egg." data-img="../assets/hotsilog.jpg">
+              <img src="../assets/hotsilog.jpg" alt="Hotsilog">
+              <div class="info"><h3>Hotsilog</h3><div class="price">₱110.00</div></div>
+            </div>
+            <div class="menu-card" data-name="Ham & Egg Sandwich" data-price="70" data-desc="Enjoy a warm and satisfying breakfast with our classic Ham & Egg Sandwich, featuring a fluffy, freshly fried egg and a slice of savory, grilled ham layered on a perfectly toasted bun. This simple yet delicious combination is the ideal way to get your morning protein and energy on the go." data-img="../assets/ham-&-egg-sandwich.jpg">
+              <img src="../assets/ham-&-egg-sandwich.jpg" alt="Ham & Egg Sandwich">
+              <div class="info"><h3>Ham & Egg Sandwich</h3><div class="price">₱70.00</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SIDE PANEL FOR MENU DETAILS -->
+    <div class="menu-details-panel" id="menuDetailsPanel">
+      <h2 id="itemName"></h2>
+      <img id="itemImage" src="" alt="">
+      <p id="itemDesc"></p>
+      <div class="price" id="itemPrice"></div>
+      <div class="quantity-section">
+        <button class="qty-btn minus">-</button>
+        <input type="number" id="quantity" value="1" min="1">
+        <button class="qty-btn plus">+</button>
+      </div>
+      <div class="subtotal" id="subtotal">Subtotal: ₱0.00</div>
+      <div class="btn-group">
+        <button class="cancel-btn" id="cancelBtn">Cancel</button>
+        <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/menu.js"></script>
+</body>
 </html>
