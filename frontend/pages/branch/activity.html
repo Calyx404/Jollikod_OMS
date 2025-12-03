@@ -52,17 +52,371 @@
             </div>
 
             <!-- tab content -->
-            <div class="tab-content" id="content-1">Home tab content here.</div>
+            <div class="tab-content" id="content-1">
+              <div class="table-container" id="order-placed">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
 
-            <div class="tab-content" id="content-2">Profile content here.</div>
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
 
-            <div class="tab-content" id="content-3">Settings content here.</div>
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
 
-            <div class="tab-content" id="content-4">4 content here.</div>
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
 
-            <div class="tab-content" id="content-5">5 content here.</div>
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
 
-            <div class="tab-content" id="content-6">6 content here.</div>
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-2">
+              <div class="table-container" id="order-queued">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-3">
+              <div class="table-container" id="order-waiting">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-4">
+              <div class="table-container" id="order-delivering">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-5">
+              <div class="table-container" id="order-delivered">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-6">
+              <div class="table-container" id="order-received">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
       </main>

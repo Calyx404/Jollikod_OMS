@@ -11,7 +11,7 @@
   & .tab-bar {
     display: flex;
     gap: var(--pad-md);
-    padding-bottom: var(--pad-sm);
+    padding-bottom: var(--pad-md);
     border-bottom: 2px solid var(--neutral-200);
 
     & .tab {
@@ -45,7 +45,7 @@
 
   & .tab-content {
     display: none;
-    padding: 16px;
+    padding: var(--pad-md) 0;
   }
 }
 
