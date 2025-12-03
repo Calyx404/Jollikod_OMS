@@ -1,31 +1,16 @@
 <?php
+header('Content-Type: application/json');
 
-// Autoloading
-spl_autoload_register(function ($class) {
-    $paths = [
-        __DIR__ . '/../core/',
-        __DIR__ . '/../app/controllers/',
-        __DIR__ . '/../app/models/',
-        __DIR__ . '/../app/services/',
-        __DIR__ . '/../app/utils/',
-        __DIR__ . '/../app/middlewares/'
-    ];
+// Start session
+session_start();
 
-    foreach ($paths as $path) {
-        $file = $path . $class . ".php";
-        if (file_exists($file)) {
-            require_once $file;
-            return;
-        }
-    }
-});
+// Load helpers
+require_once __DIR__ . '/../utils/response.php';
+require_once __DIR__ . '/../utils/helpers.php';
+require_once __DIR__ . '/../utils/sanitizer.php';
 
-// Load Config + App
-$config = require __DIR__ . '/../config/config.php';
-$app = new App($config);
+// Load database
+require_once __DIR__ . '/../database/connection.php';
 
-// Load Routes
-require __DIR__ . '/../app/routes/api.php';
-
-// Run App
-$app->run();
+// Load routes
+require_once __DIR__ . '/../routes/api.php';
