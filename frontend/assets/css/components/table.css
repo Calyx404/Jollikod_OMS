@@ -39,17 +39,19 @@
           font-family: var(--font-sans);
           font-size: var(--size-sm);
           font-weight: 600;
+          background: none;
           border: 2px solid transparent;
           border-radius: var(--radius-md);
           outline: none;
+        }
 
-          &:hover {
-            border: 2px solid var(--neutral-200);
-          }
+        &:hover {
+          background: var(--neutral-200);
+        }
 
-          &:focus {
-            border-color: var(--neutral-400);
-          }
+        &:focus-within {
+          background: var(--neutral-100);
+          border-color: var(--neutral-400);
         }
       }
     }
