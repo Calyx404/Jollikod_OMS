@@ -1,16 +1,11 @@
 <?php
-header('Content-Type: application/json');
-
-// Start session
 session_start();
 
-// Load helpers
-require_once __DIR__ . '/../utils/response.php';
-require_once __DIR__ . '/../utils/helpers.php';
-require_once __DIR__ . '/../utils/sanitizer.php';
+$method = $_SERVER['REQUEST_METHOD'];
+$path   = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// Load database
-require_once __DIR__ . '/../database/connection.php';
+$path = str_replace('/Jollikod_OMS/backend/public', '', $path);
 
-// Load routes
+$pdo = require_once __DIR__ . '/../database/connection.php';
+
 require_once __DIR__ . '/../routes/api.php';

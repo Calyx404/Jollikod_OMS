@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jollikod OMS - Final API Test</title>
+    <script src="./frontend/assets/js/routes/api.js"></script>
+    <style>
+      body {
+        font-family: Arial;
+        background: #f0f0f0;
+        padding: 20px;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      button,
+      select {
+        padding: 10px;
+        margin: 5px;
+        font-size: 16px;
+      }
+      button {
+        background: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      pre {
+        background: #000;
+        color: #0f0;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      .success {
+        color: green;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Jollikod OMS – Final API Test (New client.js)</h1>
+
+    <div class="card">
+      <h2>Customer Login</h2>
+      <input id="cEmail" placeholder="Email" value="maria@gmail.com" /><br />
+      <input
+        id="cPass"
+        type="password"
+        placeholder="Password"
+        value="123456"
+      /><br />
+      <button onclick="loginCustomer()">Login Customer</button>
+      <pre id="cResult"></pre>
+    </div>
+
+    <div class="card">
+      <h2>Branch Login</h2>
+      <input
+        id="bEmail"
+        placeholder="Email"
+        value="branch@jollikod.com"
+      /><br />
+      <input
+        id="bPass"
+        type="password"
+        placeholder="Password"
+        value="password123"
+      /><br />
+      <button onclick="loginBranch()">Login Branch</button>
+      <pre id="bResult"></pre>
+    </div>
+
+    <div class="card">
+      <button onclick="testAll()">RUN FULL TEST SEQUENCE</button>
+      <pre id="fullTest"></pre>
+    </div>
+
+    <script>
+      async function loginCustomer() {
+        const res = await API.customerLogin(
+          document.getElementById("cEmail").value,
+          document.getElementById("cPass").value
+        );
+        document.getElementById("cResult").textContent = JSON.stringify(
+          res,
+          null,
+          2
+        );
+      }
+
+      async function loginBranch() {
+        const res = await API.branchLogin(
+          document.getElementById("bEmail").value,
+          document.getElementById("bPass").value
+        );
+        document.getElementById("bResult").textContent = JSON.stringify(
+          res,
+          null,
+          2
+        );
+      }
+
+      async function testAll() {
+        const out = document.getElementById("fullTest");
+        out.textContent = "Starting...\n";
+
+        // 1. Get branches
+        let res = await API.getBranches();
+        out.textContent += "Branches: " + JSON.stringify(res) + "\n";
+
+        // 2. Branch login
+        res = await API.branchLogin("branch@jollikod.com", "password123");
+        out.textContent += "Branch Login: " + JSON.stringify(res) + "\n";
+
+        // 3. Get branch menu
+        res = await API.getBranchMenu();
+        out.textContent += "Branch Menu: " + JSON.stringify(res) + "\n";
+
+        // 4. Customer login
+        res = await API.customerLogin("maria@gmail.com", "123456");
+        out.textContent += "Customer Login: " + JSON.stringify(res) + "\n";
+
+        // 5. Place order
+        res = await API.placeOrder(
+          1,
+          [
+            { id: 1, qty: 2, price: 99 },
+            { id: 2, qty: 1, price: 45 },
+          ],
+          "My Home, QC"
+        );
+        out.textContent += "Place Order: " + JSON.stringify(res) + "\n";
+
+        out.textContent += "\nALL TESTS PASSED!";
+      }
+    </script>
+  </body>
+</html>

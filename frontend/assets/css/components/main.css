@@ -18,11 +18,11 @@
 
     & .main-section {
       width: 100%;
+      min-height: 85svh;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
     }
   }
 

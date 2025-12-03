@@ -10,6 +10,8 @@
 
     <script src="../../assets/js/components/slider.js" defer></script>
     <script src="../../assets/js/components/password.js" defer></script>
+
+    <script src="../../assets/js/routes/api.js" defer></script>
   </head>
 
   <body class="home">
@@ -60,7 +62,7 @@
         <div class="forms-container slider">
           <!-- Customer Register -->
           <section class="form-container" id="register-customer">
-            <form class="form" action="" method="post" autocomplete="off">
+            <form class="form" id="customerRegisterForm" autocomplete="off">
               <h2 class="title">Let's Get Started!</h2>
 
               <div class="input-container">
@@ -68,7 +70,7 @@
                   type="text"
                   name="name"
                   id="customer-name"
-                  placeholder="Username"
+                  placeholder="Full Name"
                   required
                 />
                 <i class="bx bxs-user"></i>
@@ -79,7 +81,7 @@
                   type="email"
                   name="email"
                   id="customer-email"
-                  placeholder="your.email@gmail.com"
+                  placeholder="your.email@example.com"
                   required
                 />
                 <i class="bx bxs-envelope"></i>
@@ -90,12 +92,22 @@
                   type="phone"
                   name="phone"
                   id="customer-phone"
-                  placeholder="+63-9XX-XXX-XXXX"
+                  placeholder="09XX-XXX-XXXX"
                   maxlength="16"
-                  pattern="^\+63-9\d{2}-\d{3}-\d{4}$"
                   required
                 />
                 <i class="bx bxs-phone"></i>
+              </div>
+
+              <div class="input-container">
+                <input
+                  type="text"
+                  name="address"
+                  id="customer-address"
+                  placeholder="Street, City, Province"
+                  required
+                />
+                <i class="bx bxs-location"></i>
               </div>
 
               <div class="input-container">
@@ -113,12 +125,13 @@
               <button type="submit" class="btn btn-primary">
                 Register as Customer
               </button>
+              <p class="message" id="customerMessage"></p>
             </form>
           </section>
 
           <!-- Branch Register -->
           <section class="form-container" id="register-branch">
-            <form class="form" action="" method="post" autocomplete="off">
+            <form class="form" id="branchRegisterForm" autocomplete="off">
               <h2 class="title">Let's Get Started!</h2>
 
               <div class="input-container">
@@ -150,10 +163,20 @@
                   id="branch-phone"
                   placeholder="+63-9XX-XXX-XXXX"
                   maxlength="16"
-                  pattern="^\+63-9\d{2}-\d{3}-\d{4}$"
                   required
                 />
                 <i class="bx bxs-phone"></i>
+              </div>
+
+              <div class="input-container">
+                <input
+                  type="text"
+                  name="address"
+                  id="branch-address"
+                  placeholder="Street, City, Province"
+                  required
+                />
+                <i class="bx bxs-location"></i>
               </div>
 
               <div class="input-container">
@@ -171,6 +194,8 @@
               <button type="submit" class="btn btn-primary">
                 Register as Branch
               </button>
+
+              <p class="message" id="branchMessage"></p>
             </form>
           </section>
 

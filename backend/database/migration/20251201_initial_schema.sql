@@ -45,7 +45,7 @@ CREATE TABLE staffs (
     updated_at TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (branch_id) REFERENCES branches(branch_id) ON DELETE CASCADE
 );
-CREATE INDEX idx_staff_branch ON staff(branch_id);
+CREATE INDEX idx_staff_branch ON staffs(branch_id);
 
 -- 4. MENUS (1 per branch)
 CREATE TABLE menus (
