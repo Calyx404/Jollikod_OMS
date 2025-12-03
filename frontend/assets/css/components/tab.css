@@ -1,7 +1,7 @@
 .tab-container {
   width: 100%;
   height: 100svh;
-  padding: var(--pad-md);
+  position: relative;
 
   & input[type="radio"] {
     display: none;
@@ -9,9 +9,12 @@
   }
 
   & .tab-bar {
+    position: sticky;
+    top: 0;
     display: flex;
     gap: var(--pad-md);
-    padding-bottom: var(--pad-md);
+    background: var(--neutral-100);
+    padding: var(--pad-md);
     border-bottom: 2px solid var(--neutral-200);
 
     & .tab {
@@ -45,7 +48,7 @@
 
   & .tab-content {
     display: none;
-    padding: var(--pad-md) 0;
+    padding: var(--pad-md);
   }
 }
 
