@@ -160,6 +160,7 @@ ul {
 i.bx,
 h1.logo,
 img.logo,
+label.tab,
 .page-container,
 a,
 button {
@@ -194,9 +195,5 @@ textarea {
 
   h5 {
     font-size: 1.15rem;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
   }
 }
