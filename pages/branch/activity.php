@@ -1,0 +1,848 @@
+<?php
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'secure' => false,
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+
+session_start();
+require '../../database/connection.php';
+
+if (!isset($_SESSION['branch_id'])) {
+    header("Location: ../branch/");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order More!</title>
+
+    <link rel="stylesheet" href="../../assets/css/pages/branch/activity.css" />
+
+    <script src="../../assets/js/components/layer.js" defer></script>
+  </head>
+  <body class="branch">
+    <main class="page">
+      <header class="header header-page">
+        <div class="context">
+          <h1>Activity</h1>
+        </div>
+      </header>
+
+      <main class="main-container main-scrollable">
+        <main class="main">
+          <div class="tab-container">
+            <!-- radios -->
+            <input type="radio" name="tab-group" id="tab-1" checked />
+            <input type="radio" name="tab-group" id="tab-2" />
+            <input type="radio" name="tab-group" id="tab-3" />
+            <input type="radio" name="tab-group" id="tab-4" />
+            <input type="radio" name="tab-group" id="tab-5" />
+            <input type="radio" name="tab-group" id="tab-6" />
+
+            <!-- tab bar (top) -->
+            <div class="tab-bar">
+              <label for="tab-1" class="tab">Placed</label>
+              <label for="tab-2" class="tab">Queued</label>
+              <label for="tab-3" class="tab">Waiting</label>
+              <label for="tab-4" class="tab">Delivering</label>
+              <label for="tab-5" class="tab">Delivered</label>
+              <label for="tab-6" class="tab">Received</label>
+            </div>
+
+            <!-- tab content -->
+            <div class="tab-content" id="content-1">
+              <div class="table-container" id="order-placed">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-secondary">
+                      <span class="btn-label">Export</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-2">
+              <div class="table-container" id="order-queued">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-secondary">
+                      <span class="btn-label">Export</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-3">
+              <div class="table-container" id="order-waiting">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-secondary">
+                      <span class="btn-label">Export</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-4">
+              <div class="table-container" id="order-delivering">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-secondary">
+                      <span class="btn-label">Export</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-5">
+              <div class="table-container" id="order-delivered">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-secondary">
+                      <span class="btn-label">Export</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="content-6">
+              <div class="table-container" id="order-received">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>From</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>To</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="amount">Amount</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-secondary">
+                      <span class="btn-label">Export</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-14</td>
+                        <td>John Doe</td>
+                        <td>$120</td>
+                        <td>Completed</td>
+                      </tr>
+
+                      <tr>
+                        <td>2025-02-15</td>
+                        <td>Jane Doe</td>
+                        <td>$89</td>
+                        <td>Pending</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </main>
+    </main>
+
+    <aside class="layer" id="add-item">
+      <header class="header header-page">
+        <div class="actions left">
+          <button class="btn btn-secondary layer-close" title="Close Panel">
+            <i class="bx bxs-dock-right-arrow btn-icon"></i>
+          </button>
+        </div>
+        <div class="context">
+          <h1>Add Item</h1>
+        </div>
+        <div class="actions right">
+          <button
+            onclick="parent.navigate(event, '../pages/branch/activity.php')"
+            class="btn btn-primary"
+            title="Di ko na alam"
+          >
+            <i class="bx bxs-user-plus btn-icon"></i>
+          </button>
+        </div>
+      </header>
+
+      <main class="main-container main-scrollable">
+        <main class="main">Dito Main Content</main>
+      </main>
+    </aside>
+
+    <aside class="layer" id="edit-item">
+      <header class="header header-page">
+        <div class="actions left">
+          <button class="btn btn-secondary layer-close" title="Close Panel">
+            <i class="bx bxs-dock-right-arrow btn-icon"></i>
+          </button>
+        </div>
+        <div class="context">
+          <h1>Edit Item</h1>
+        </div>
+        <div class="actions right">
+          <button
+            onclick="parent.navigate(event, '../pages/branch/activity.php')"
+            class="btn btn-primary"
+            title="Di ko na alam"
+          >
+            <i class="bx bxs-user-plus btn-icon"></i>
+          </button>
+        </div>
+      </header>
+
+      <main class="main-container main-scrollable">
+        <main class="main">Dito Sidebar</main>
+      </main>
+    </aside>
+  </body>
+</html>

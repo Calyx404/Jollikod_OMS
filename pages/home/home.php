@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ikaw ang bida!</title>
+
+    <link rel="stylesheet" href="../../assets/css/pages/home/home.css" />
+  </head>
+  <body class="home">
+    <header class="header">
+      <div class="context">
+        <h1 class="logo">
+          <a onclick="parent.navigate(event, '../pages/home/home.php')"
+            >Jollikod.</a
+          >
+        </h1>
+      </div>
+      <div class="actions right">
+        <a
+          onclick="parent.navigate(event, '../pages/home/login.php')"
+          class="btn btn-secondary"
+        >
+          <span class="btn-label">Log In</span>
+          <i class="bx bxs-door-open btn-icon"></i>
+        </a>
+        <a
+          onclick="parent.navigate(event, '../pages/home/register.php')"
+          class="btn btn-primary"
+          ><span class="btn-label">Register</span>
+          <i class="bx bxs-user-plus btn-icon"></i>
+        </a>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <main class="main">
+        <!-- Hero Section -->
+        <section class="main-section hero" id="hero">
+          <div class="hero-bg"></div>
+
+          <!-- Floating Food Elements -->
+          <svg class="floating-food food-1" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#ffbd05" opacity="0.3" />
+            <path d="M30,50 Q50,30 70,50 Q50,70 30,50" fill="#fe7002" />
+            <circle cx="50" cy="45" r="15" fill="#c1011a" />
+            <rect x="40" y="55" width="20" height="8" rx="4" fill="#ffbd05" />
+          </svg>
+
+          <svg class="floating-food food-2" viewBox="0 0 100 100">
+            <rect
+              x="20"
+              y="30"
+              width="60"
+              height="50"
+              rx="8"
+              fill="#fe7002"
+              opacity="0.8"
+            />
+            <rect x="25" y="35" width="50" height="10" rx="5" fill="#ffbd05" />
+            <rect x="30" y="50" width="40" height="8" rx="4" fill="#c1011a" />
+            <rect x="35" y="63" width="30" height="8" rx="4" fill="#ffbd05" />
+          </svg>
+
+          <svg class="floating-food food-3" viewBox="0 0 100 100">
+            <ellipse
+              cx="50"
+              cy="65"
+              rx="20"
+              ry="25"
+              fill="#ffbd05"
+              opacity="0.7"
+            />
+            <rect x="35" y="35" width="30" height="35" fill="#fe7002" />
+            <circle cx="50" cy="30" r="8" fill="#c1011a" />
+          </svg>
+
+          <svg class="floating-food food-4" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#c1011a" opacity="0.4" />
+            <path d="M30,50 L50,30 L70,50 L50,70 Z" fill="#ffbd05" />
+            <circle cx="50" cy="50" r="15" fill="#fe7002" />
+          </svg>
+
+          <div class="hero-content">
+            <h1>Satisfy Your Cravings</h1>
+            <p>
+              Fast, fresh, and delivered right to your door. Experience the joy
+              of Jollikod!
+            </p>
+          </div>
+        </section>
+
+        <!-- Popular Deals Section -->
+        <section class="main-section deals" id="deals">
+          <h2 class="section-title">Popular Deals of the Week</h2>
+          <div class="deals-grid">
+            <div class="deal-card" data-parallax="0.05">
+              <div class="deal-accent"></div>
+              <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop"
+                alt="Ultimate Burger Combo"
+                class="deal-image"
+              />
+              <h3>Ultimate Burger Combo</h3>
+              <p class="deal-price">₱299</p>
+              <p class="deal-desc">
+                Juicy double patty burger with crispy fries and a refreshing
+                drink. Perfect for burger lovers!
+              </p>
+              <a href="#order" class="btn btn-primary">Order Now</a>
+            </div>
+
+            <div class="deal-card" data-parallax="0.08">
+              <div
+                class="deal-accent"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--orange),
+                    var(--red)
+                  );
+                "
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop"
+                alt="Crispy Chicken Feast"
+                class="deal-image"
+              />
+              <h3>Crispy Chicken Feast</h3>
+              <p class="deal-price">₱349</p>
+              <p class="deal-desc">
+                Golden fried chicken with savory rice and gravy. A meal that
+                hits the spot every time!
+              </p>
+              <a href="#order" class="btn btn-primary">Order Now</a>
+            </div>
+
+            <div class="deal-card" data-parallax="0.06">
+              <div
+                class="deal-accent"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--red),
+                    var(--yellow)
+                  );
+                "
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=400&fit=crop"
+                alt="Family Sharing Box"
+                class="deal-image"
+              />
+              <h3>Family Sharing Box</h3>
+              <p class="deal-price">₱899</p>
+              <p class="deal-desc">
+                A complete feast for the whole family! Includes burgers,
+                chicken, fries, and drinks for 4.
+              </p>
+              <a href="#order" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- App Features Section -->
+        <section class="main-section features" id="features">
+          <h2 class="section-title">Why Choose Jollikod?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #ffbd05, #fe7002)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <path
+                    d="M30,70 L50,30 L70,70 M35,60 L65,60"
+                    stroke="#fff"
+                    stroke-width="6"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Lightning Fast Delivery</h3>
+              <p>
+                Get your food in 30 minutes or less with our optimized delivery
+                network.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #c1011a, #fe7002)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <rect
+                    x="25"
+                    y="30"
+                    width="50"
+                    height="45"
+                    rx="5"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                  />
+                  <line
+                    x1="40"
+                    y1="50"
+                    x2="60"
+                    y2="50"
+                    stroke="#fff"
+                    stroke-width="5"
+                  />
+                  <line
+                    x1="50"
+                    y1="40"
+                    x2="50"
+                    y2="60"
+                    stroke="#fff"
+                    stroke-width="5"
+                  />
+                </svg>
+              </div>
+              <h3>Easy Ordering</h3>
+              <p>
+                Simple, intuitive interface that makes ordering a breeze. Just a
+                few taps away!
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #fe7002, #ffbd05)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <circle cx="50" cy="40" r="15" fill="#fff" />
+                  <path
+                    d="M50,60 L30,85 L40,85 L40,95 L60,95 L60,85 L70,85 Z"
+                    fill="#fff"
+                  />
+                </svg>
+              </div>
+              <h3>Branch Locator</h3>
+              <p>
+                Find the nearest Jollikod branch instantly with our smart
+                location system.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #ffbd05, #c1011a)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <rect
+                    x="30"
+                    y="35"
+                    width="40"
+                    height="35"
+                    rx="5"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                  />
+                  <circle cx="45" cy="52" r="4" fill="#fff" />
+                  <circle cx="55" cy="52" r="4" fill="#fff" />
+                </svg>
+              </div>
+              <h3>Secure Wallet</h3>
+              <p>
+                Safe and convenient payment options with our encrypted digital
+                wallet.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #c1011a, #ffbd05)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="25"
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="5"
+                  />
+                  <path
+                    d="M50,30 L50,50 L65,65"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Order Tracking</h3>
+              <p>
+                Real-time GPS tracking so you always know where your food is.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="background: linear-gradient(135deg, #fe7002, #c1011a)"
+              >
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                  <circle
+                    cx="50"
+                    cy="35"
+                    r="15"
+                    stroke="#fff"
+                    stroke-width="5"
+                    fill="none"
+                  />
+                  <path
+                    d="M30,60 Q50,50 70,60 L70,80 Q50,90 30,80 Z"
+                    fill="#fff"
+                  />
+                </svg>
+              </div>
+              <h3>24/7 Customer Support</h3>
+              <p>We're always here to help. Chat with us anytime, anywhere.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <a href="./home.php">
+            <img
+              src="../../assets/res/logos/Jollikod.svg"
+              alt="Jollikod"
+              class="logo"
+            />
+          </a>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="section-title">About Jollikod</h4>
+          <ul class="section-links">
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#press">Press Kit</a></li>
+            <li><a href="#blog">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="section-title">For Partners</h4>
+          <ul class="section-links">
+            <li><a href="#partner">Become a Partner</a></li>
+            <li><a href="#driver">Become a Driver</a></li>
+            <li><a href="#merchant">Merchant Portal</a></li>
+            <li><a href="#api">API Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="section-title">Support</h4>
+          <ul class="section-links">
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#terms">Terms & Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2024 Jollikod. All rights reserved. Made with blood, sweat, and
+        tears for Sir Airone.
+      </div>
+    </footer>
+  </body>
+</html>

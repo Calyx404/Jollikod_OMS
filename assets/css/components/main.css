@@ -1,0 +1,38 @@
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: var(--neutral-100);
+  overflow: hidden;
+  width: 100%;
+
+  & .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    & .main-section {
+      width: 100%;
+      min-height: 85svh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &.main-scrollable {
+    max-height: 86svh;
+    margin-bottom: var(--pad-md);
+
+    & .main {
+      scrollbar-gutter: stable;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+}
