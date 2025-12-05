@@ -76,7 +76,7 @@ if (isset($_GET['delete']) && $_GET['delete'] === "yes") {
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    echo "<script>window.top.location.href='../home/login.php';</script>";
+    echo "<script>parent.clearSavedPage();parent.navigate(null, '../pages/home/home.php');</script>";
     exit;
 }
 
