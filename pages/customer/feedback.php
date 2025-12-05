@@ -21,11 +21,11 @@ if (!isset($_SESSION['customer_id'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How's our Service!</title>
+    <title>How's our Service?</title>
 
     <link
       rel="stylesheet"
-      href="../../assets/css/pages/customer/feedback.css"
+      href="../../assets/css/pages/customer/activity.css"
     />
 
     <script src="../../assets/js/components/layer.js" defer></script>

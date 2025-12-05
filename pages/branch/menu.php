@@ -108,13 +108,16 @@ $inventories = $stmt->fetchAll();
                           <th>Price</th>
                           <th>Created</th>
                           <th>Updated</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
 
                       <tbody>
                         <?php if (count($items) === 0): ?>
 
-                          <h2>No records available.</h2>
+                          <tr>
+                            <td colspan="8">No records available.</td>
+                          </tr>
 
                         <?php else: ?>
                           <?php foreach ($items as $entry): ?>
@@ -127,6 +130,12 @@ $inventories = $stmt->fetchAll();
                                 <td><?= $entry['price'] ?></td>
                                 <td><?= $entry['created_at'] ?></td>
                                 <td><?= $entry['updated_at'] ?></td>
+                                <td>
+                                <button class="btn btn-primary layer-open" data-layer-target="edit-item">
+                                  <span class="btn-label">Edit</span>
+                                  <i class="bx bxs-user-plus btn-icon"></i>
+                                </button>
+                              </td>
                             </tr>
                           <?php endforeach; ?>
 
@@ -178,7 +187,9 @@ $inventories = $stmt->fetchAll();
                       <tbody>
                         <?php if (count($inventories) === 0): ?>
 
-                          <h2>No records available.</h2>
+                          <tr>
+                            <td colspan="8">No records available.</td>
+                          </tr>
 
                         <?php else: ?>
                           <?php foreach ($inventories as $entry): ?>

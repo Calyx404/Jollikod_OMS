@@ -104,7 +104,6 @@ CREATE TABLE orders (
     store_address TEXT,
     destination_address TEXT,
     status VARCHAR(50) DEFAULT 'placed',
-    deleted_at TIMESTAMP NULL DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (branch_id) REFERENCES branches(branch_id),
