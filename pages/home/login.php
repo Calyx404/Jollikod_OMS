@@ -22,12 +22,14 @@ if (isset($_POST['customer_login'])) {
         $stmt->execute([$email]);
         $customer = $stmt->fetch();
 
-        if ($customer && password_verify($password, $customer['password'])) {
+        if (!$customer) {
+          echo "<script>alert('Customer: Account not found.');</script>";
+        } elseif (!password_verify($password, $customer['password'])) {
+            echo "<script>alert('Customer: Invalid email or password.');</script>";
+        } else {
             $_SESSION['customer_id'] = $customer['customer_id'];
             header("Location: ../customer/index.php");
             exit;
-        } else {
-            echo "<script>alert('Customer: Invalid email or password.');</script>";
         }
     }
 }
@@ -44,12 +46,14 @@ if (isset($_POST['branch_login'])) {
         $stmt->execute([$email]);
         $branch = $stmt->fetch();
 
-        if ($branch && password_verify($password, $branch['password'])) {
+        if (!$branch) {
+          echo "<script>alert('Branch: Account not found.');</script>";
+        } elseif (!password_verify($password, $branch['password'])) {
+            echo "<script>alert('Branch: Invalid email or password.');</script>";
+        } else {
             $_SESSION['branch_id'] = $branch['branch_id'];
             header("Location: ../branch/index.php");
             exit;
-        } else {
-            echo "<script>alert('Branch: Invalid email or password.');</script>";
         }
     }
 }

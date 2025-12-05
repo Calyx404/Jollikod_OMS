@@ -3,6 +3,10 @@
 @import "../../components/main.css";
 @import "../../components/form.css";
 
+.main-comtainer {
+  flex: 0;
+}
+
 .forms-container {
   position: relative;
   width: 100%;

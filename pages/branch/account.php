@@ -27,7 +27,7 @@ if (!$branch) {
     exit;
 }
 
-// -------------------- UPDATE BRANCH --------------------
+// -------------------- UPDATE --------------------
 if (isset($_POST['update_branch'])) {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -51,7 +51,7 @@ if (isset($_POST['update_branch'])) {
             ");
 
             if ($update->execute([$name, $email, $phone, $address, $branch_id])) {
-                echo "<script>alert('Branch updated successfully!'); parent.navigate(null, '../pages/branch/account.php');</script>";
+                echo "<script>alert('Branch updated successfully!'); parent.navigate(null, './account.php');</script>";
             } else {
                 echo "<script>alert('Update failed.');</script>";
             }
@@ -77,6 +77,15 @@ if (isset($_POST['update_branch'])) {
         <div class="context">
           <h1>Profile</h1>
         </div>
+        <div class="actions right">
+        <button
+          onclick="parent.navigate('./settings.php')"
+          class="btn btn-primary subnav"
+        >
+          <span class="btn-label">Settings</span>
+          <i class="bx bxs-cog btn-icon"></i>
+        </button>
+      </div>
       </header>
 
       <main class="main-container main-scrollable">
@@ -86,7 +95,7 @@ if (isset($_POST['update_branch'])) {
             <form class="form" method="POST" autocomplete="off">
                 <div class="account-field">
                     <label for="name">
-                    <h4>Name:</h4>
+                    <h4>Name</h4>
                   </label>
                   <div class="input-container">
                     <input type="text" name="name" placeholder="Full Name" value="<?= htmlspecialchars($branch['name']) ?>" required>
@@ -96,7 +105,7 @@ if (isset($_POST['update_branch'])) {
                 
                 <div class="account-field">
                   <label for="email">
-                    <h4>Email:</h4>
+                    <h4>Email</h4>
                   </label>
                       <div class="input-container">
                     <input type="email" name="email" placeholder="your.email@example.com" value="<?= htmlspecialchars($branch['email']) ?>" required>
@@ -106,7 +115,7 @@ if (isset($_POST['update_branch'])) {
 
                 <div class="account-field">
                   <label for="phone">
-                    <h4>Phone:</h4>
+                    <h4>Phone</h4>
                   </label>
                       <div class="input-container">
                     <input type="phone" name="phone" placeholder="09XX-XXX-XXXX" value="<?= htmlspecialchars($branch['phone']) ?>" required>
@@ -116,7 +125,7 @@ if (isset($_POST['update_branch'])) {
 
                 <div class="account-field">
                   <label for="address">
-                    <h4>Address:</h4>
+                    <h4>Address</h4>
                   </label>
                       <div class="input-container">
                     <input type="text" name="address" placeholder="Lot, Street, City, Province" value="<?= htmlspecialchars($branch['address']) ?>">

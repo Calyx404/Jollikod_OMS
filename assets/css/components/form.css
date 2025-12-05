@@ -5,6 +5,23 @@
   gap: var(--pad-lg);
   width: 100%;
 
+  & .account-field {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--pad-sm);
+  }
+
+  & .account-actions {
+      width: 100%;
+      display: flex;
+      gap: var(--pad-md);
+
+      & .btn {
+          flex: 1;
+      }
+  }
+
   & .input-container {
     position: relative;
     width: 100%;
@@ -58,6 +75,10 @@
         visibility: visible !important;
       }
     }
+  }
+
+  & .btn {
+      width: 100%;
   }
 }
 

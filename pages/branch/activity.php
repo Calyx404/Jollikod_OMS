@@ -62,12 +62,7 @@ if (!isset($_SESSION['branch_id'])) {
                 <div class="table-header">
                   <form class="table-filter">
                     <div class="field">
-                      <label>From</label>
-                      <input type="date" />
-                    </div>
-
-                    <div class="field">
-                      <label>To</label>
+                      <label>Date</label>
                       <input type="date" />
                     </div>
 
@@ -184,12 +179,7 @@ if (!isset($_SESSION['branch_id'])) {
                 <div class="table-header">
                   <form class="table-filter">
                     <div class="field">
-                      <label>From</label>
-                      <input type="date" />
-                    </div>
-
-                    <div class="field">
-                      <label>To</label>
+                      <label>Date</label>
                       <input type="date" />
                     </div>
 
@@ -306,12 +296,7 @@ if (!isset($_SESSION['branch_id'])) {
                 <div class="table-header">
                   <form class="table-filter">
                     <div class="field">
-                      <label>From</label>
-                      <input type="date" />
-                    </div>
-
-                    <div class="field">
-                      <label>To</label>
+                      <label>Date</label>
                       <input type="date" />
                     </div>
 
@@ -428,12 +413,7 @@ if (!isset($_SESSION['branch_id'])) {
                 <div class="table-header">
                   <form class="table-filter">
                     <div class="field">
-                      <label>From</label>
-                      <input type="date" />
-                    </div>
-
-                    <div class="field">
-                      <label>To</label>
+                      <label>Date</label>
                       <input type="date" />
                     </div>
 
@@ -550,12 +530,7 @@ if (!isset($_SESSION['branch_id'])) {
                 <div class="table-header">
                   <form class="table-filter">
                     <div class="field">
-                      <label>From</label>
-                      <input type="date" />
-                    </div>
-
-                    <div class="field">
-                      <label>To</label>
+                      <label>Date</label>
                       <input type="date" />
                     </div>
 
@@ -672,12 +647,7 @@ if (!isset($_SESSION['branch_id'])) {
                 <div class="table-header">
                   <form class="table-filter">
                     <div class="field">
-                      <label>From</label>
-                      <input type="date" />
-                    </div>
-
-                    <div class="field">
-                      <label>To</label>
+                      <label>Date</label>
                       <input type="date" />
                     </div>
 

@@ -39,11 +39,19 @@ if (!isset($_SESSION['branch_id'])) {
         </div>
         <div class="actions right">
           <button
-            class="btn btn-primary layer-open"
-            data-layer-target="add-item"
+            onclick="parent.navigate('./customer.php')"
+            class="btn btn-primary subnav"
           >
-            <span class="btn-label">Edit Profile</span>
-            <i class="bx bxs-user-plus btn-icon"></i>
+            <span class="btn-label">Customer</span>
+            <i class="bx bxs-fork-spoon btn-icon"></i>
+          </button>
+
+          <button
+            onclick="parent.navigate('./staff.php')"
+            class="btn btn-primary subnav"
+          >
+            <span class="btn-label">Staff</span>
+            <i class="bx bxs-chef-hat btn-icon"></i>
           </button>
         </div>
       </header>

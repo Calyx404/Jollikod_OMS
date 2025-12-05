@@ -3,27 +3,4 @@
 @import "../../components/main.css";
 @import "../../components/page.css";
 @import "../../components/form.css";
-
-.main {
-    & .form-container {
-    width: 100svw;
-    padding: var(--pad-xl) 5%;
-
-    & .account-field {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: var(--pad-sm);
-    }
-
-    & .account-actions {
-        width: 100%;
-        display: flex;
-        gap: var(--pad-md);
-
-        & .btn {
-            flex: 1;
-        }
-    }
-}
-}
+@import "../../components/profile.css";

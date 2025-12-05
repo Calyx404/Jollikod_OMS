@@ -15,7 +15,7 @@ if (!isset($_SESSION['branch_id'])) {
     exit;
 }
 
-$stmt = $pdo->query("SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY created_at DESC");
+$stmt = $pdo->query("SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY created_at ASC");
 $customers = $stmt->fetchAll();
 
 $stmt = $pdo->query("SELECT * FROM feedbacks ORDER BY created_at DESC");
@@ -37,19 +37,23 @@ $feedbacks = $stmt->fetchAll();
     <main class="page">
       <header class="header header-page">
         <div class="context">
-          <h1>
-            <a onclick="parent.navigate(event, '../pages/home/home.php')"
-              >Customer</a
-            >
-          </h1>
+          <h1>Customer</h1>
         </div>
         <div class="actions right">
           <button
-            class="btn btn-primary layer-open"
-            data-layer-target="add-item"
+            onclick="parent.navigate('./store.php')"
+            class="btn btn-secondary subnav"
           >
-            <span class="btn-label">Add Item</span>
-            <i class="bx bxs-user-plus btn-icon"></i>
+            <span class="btn-label">Store</span>
+            <i class="bx bxs-store btn-icon"></i>
+          </button>
+
+          <button
+            onclick="parent.navigate('./staff.php')"
+            class="btn btn-primary subnav"
+          >
+            <span class="btn-label">Staff</span>
+            <i class="bx bxs-chef-hat btn-icon"></i>
           </button>
         </div>
       </header>
@@ -109,7 +113,9 @@ $feedbacks = $stmt->fetchAll();
                     <tbody>
                       <?php if (count($customers) === 0): ?>
 
-                        <tr>No records available.</tr>
+                        <tr>
+                          <td colspan="8">No records available.</td>
+                        </tr>
 
                       <?php else: ?>
                         <?php foreach ($customers as $entry): ?>
@@ -171,7 +177,9 @@ $feedbacks = $stmt->fetchAll();
                     <tbody>
                       <?php if (count($feedbacks) === 0): ?>
 
-                        <tr>No records available.</tr>
+                        <tr>
+                          <td colspan="8">No records available.</td>
+                        </tr>
 
                       <?php else: ?>
                         <?php foreach ($feedbacks as $entry): ?>

@@ -27,7 +27,7 @@ if (!$branch) {
     exit;
 }
 
-// -------------------- DELETE BRANCH --------------------
+// -------------------- DELETE --------------------
 if (isset($_GET['delete']) && $_GET['delete'] === "yes") {
     // Soft delete
     $del = $pdo->prepare("UPDATE branches SET deleted_at = NOW() WHERE branch_id = ?");
@@ -77,12 +77,96 @@ if (isset($_GET['logout'])) {
         <div class="context">
           <h1>Settings</h1>
         </div>
+
+        <div class="actions right">
+          <button
+            onclick="parent.navigate('./account.php')"
+            class="btn btn-secondary subnav"
+          >
+            <span class="btn-label">Profile</span>
+            <i class="bx bxs-user btn-icon"></i>
+          </button>
+
+          <button
+            class="btn btn-primary"
+          >
+            <span class="btn-label">Apply Changes</span>
+            <i class="bx bxs-save btn-icon"></i>
+          </button>
+        </div>
       </header>
 
       <main class="main-container main-scrollable">
         <main class="main">
-              <button class="btn btn-secondary" onclick="confirmDelete()">Delete Account</button>
-              <button class="btn btn-primary" onclick="logout()">Logout</button>
+          <section class="settings-container">
+            <div class="settings-item">
+                <h4>Sounds</h4>
+
+                <div class="settings-field">
+                    <span>Background</span>
+                    <label class="switch">
+                        <input type="checkbox" checked >
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div class="settings-field">
+                    <span>Notificatons</span>
+                    <label class="switch">
+                        <input type="checkbox" checked >
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div class="settings-field">
+                    <span>Haptics</span>
+                    <label class="switch">
+                        <input type="checkbox" >
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="settings-item">
+                <h4>Legal</h4>
+
+                <div class="settings-field">
+                    <p>Terms of Use</p>
+                    <i class='bx  bxs-article'></i> 
+                </div>
+
+                <div class="settings-field">
+                    <p>Privacy Policy</p>
+                    <i class='bx  bxs-shield-alt-2'></i> 
+                </div>
+            </div>
+
+            <div class="settings-item">
+                <h4>About</h4>
+
+                <div class="settings-field">
+                    <p>App Version</p>
+                    <strong>v1.0.0</strong>
+                </div>
+
+                <div class="settings-field">
+                    <p>Rate This App</p>
+                    <i class='bx  bxs-star'></i> 
+                </div>
+
+                <div class="settings-field">
+                    <p>About This App</p>
+                    <i class='bx  bxs-info-circle'></i> 
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button class="btn btn-secondary" onclick="confirmDelete()">Delete Account</button>
+                <button class="btn btn-primary" onclick="logout()">Logout</button>
+            </div>
+            
+          </section>
         </main>
       </main>
     </main>

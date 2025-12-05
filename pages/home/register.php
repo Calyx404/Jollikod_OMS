@@ -48,7 +48,6 @@ if (isset($_POST['branch_register'])) {
     $email = trim($_POST['branch_email']);
     $password = trim($_POST['branch_password']);
     $phone = trim($_POST['branch_phone']);
-    $address = trim($_POST['branch_address']);
 
     if ($name === "" || $email === "" || $password === "") {
         echo "<script>alert('Branch: All fields are required.');</script>";
@@ -60,9 +59,9 @@ if (isset($_POST['branch_register'])) {
             echo "<script>alert('Branch: Email already exists.');</script>";
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT);
-            $stmt = $pdo->prepare("INSERT INTO branches (name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO branches (name, email, password, phone) VALUES (?, ?, ?, ?)");
 
-            if ($stmt->execute([$name, $email, $hash, $phone, $address])) {
+            if ($stmt->execute([$name, $email, $hash, $phone])) {
                 echo "<script>alert('Branch registered successfully!');</script>";
                 $_SESSION['branch_id'] = $branch['branch_id'];
             header("Location: ../branch/index.php");

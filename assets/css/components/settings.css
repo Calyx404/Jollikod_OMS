@@ -1,0 +1,44 @@
+@import './switch.css';
+
+.settings-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--pad-xl) 5%;
+    gap: var(--pad-lg);
+
+    & .settings-item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--pad-md);
+
+        & .settings-field {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid var(--neutral-400);
+            padding: var(--pad-md) var(--pad-lg);
+            border-radius: var(--radius-md);
+            justify-content: space-between;
+            background: var(--neutral-100);
+            gap: var(--pad-md);
+
+            &:hover {
+                border: 2px solid var(--color-secondary);
+            }
+        }
+    }
+
+    & .settings-actions {
+        width: 100%;
+        display: flex;
+        gap: var(--pad-md);
+
+        & .btn {
+            flex: 1;
+        }
+    }
+}

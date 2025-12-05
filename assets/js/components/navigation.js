@@ -1,14 +1,24 @@
-const iframe = document.querySelector("#page-frame");
-const pages = document.querySelectorAll(".page-container");
+window.navigate = function (target, triggerElement = null) {
+  const iframe = document.querySelector("#page-frame");
+  const pages = document.querySelectorAll(".page-container");
 
-pages.forEach((item) => {
-  item.addEventListener("click", () => {
-    const target = item.dataset.target;
-    if (!target) return;
+  if (!iframe || !target) return;
 
-    iframe.src = target;
+  iframe.src = target;
 
+  if (triggerElement) {
     pages.forEach((p) => p.classList.remove("active-page"));
-    item.classList.add("active-page");
+    triggerElement.classList.add("active-page");
+  }
+};
+
+(function () {
+  const pages = document.querySelectorAll(".page-container");
+
+  pages.forEach((item) => {
+    item.addEventListener("click", () => {
+      const target = item.dataset.target;
+      window.navigate(target, item);
+    });
   });
-});
+})();

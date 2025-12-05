@@ -1,0 +1,6 @@
+.main {
+    & .form-container {
+        width: 100svw;
+        padding: var(--pad-xl) 5%;
+    }
+}

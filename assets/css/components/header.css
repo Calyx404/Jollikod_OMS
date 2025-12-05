@@ -28,6 +28,11 @@
 
     &.right {
       align-items: flex-end;
+
+      & .subnav {
+        display: none;
+        visibility: hidden;
+      }
     }
   }
 }
@@ -35,6 +40,11 @@
 @media (max-width: 768px) {
   .header .actions {
     gap: var(--pad-sm);
+
+    &.right .subnav {
+        display: inline-flex;
+        visibility: visible;
+    }
   }
 
   .header-page {
