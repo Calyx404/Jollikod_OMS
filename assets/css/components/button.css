@@ -64,6 +64,19 @@
       background: var(--neutral-100);
     }
   }
+
+  &.btn-danger {
+    background: var(--color-primary);
+    color: var(--neutral-100);
+
+    & .btn-icon {
+      color: var(--neutral-100);
+    }
+
+    &:hover {
+      background: var(--color-primary-light);
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {

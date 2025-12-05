@@ -79,6 +79,14 @@
         padding: var(--pad-md);
         text-align: left;
         border-bottom: 1px solid var(--neutral-200);
+        white-space: nowrap;
+      }
+
+      & td.actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--pad-md);
       }
 
       & tbody {

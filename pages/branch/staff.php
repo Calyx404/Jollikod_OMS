@@ -14,6 +14,9 @@ if (!isset($_SESSION['branch_id'])) {
     header("Location: ../branch/");
     exit;
 }
+
+$stmt = $pdo->query("SELECT * FROM staffs WHERE deleted_at IS NULL ORDER BY created_at ASC");
+$staffs = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +24,7 @@ if (!isset($_SESSION['branch_id'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Staff Management</title>
+    <title>Our Management!</title>
 
     <link rel="stylesheet" href="../../assets/css/pages/branch/staff.css" />
 
@@ -31,11 +34,7 @@ if (!isset($_SESSION['branch_id'])) {
     <main class="page">
       <header class="header header-page">
         <div class="context">
-          <h1>
-            <a onclick="parent.navigate(event, '../pages/home/home.php')"
-              >Staff</a
-            >
-          </h1>
+          <h1>Staff</h1>
         </div>
         <div class="actions right">
           <button
@@ -47,21 +46,119 @@ if (!isset($_SESSION['branch_id'])) {
           </button>
 
           <button
-            onclick="parent.navigate('./customer.php')"
+            onclick="parent.navigate('./staff.php')"
             class="btn btn-primary subnav"
           >
             <span class="btn-label">Customer</span>
             <i class="bx bxs-fork-spoon btn-icon"></i>
           </button>
+
+          <button
+            class="btn btn-primary layer-open"
+            data-layer-target="add-staff"
+          >
+            <span class="btn-label">Add Staff</span>
+            <i class="bx bxs-user-plus btn-icon"></i>
+          </button>
         </div>
       </header>
 
       <main class="main-container main-scrollable">
-        <main class="main">Arf</main>
+        <main class="main">
+
+          <div class="tab-container">
+            <!-- radios -->
+            <input type="radio" name="tab-group" id="tab-1" checked />
+
+            <!-- tab bar (top) -->
+            <div class="tab-bar">
+              <label for="tab-1" class="tab">Management</label>
+            </div>
+
+            <!-- tab content -->
+            <div class="tab-content" id="content-1">
+              <div class="table-container" id="staff-management">
+                <div class="table-header">
+                  <form class="table-filter">
+                    <div class="field">
+                      <label>Date</label>
+                      <input type="date" />
+                    </div>
+
+                    <div class="field">
+                      <label>Sort By</label>
+                      <select>
+                        <option value="date">ID</option>
+                        <option value="name">Name</option>
+                      </select>
+                    </div>
+
+                    <button class="btn btn-primary">
+                      <span class="btn-label">Apply</span>
+                      <i class="bx bxs-user-plus btn-icon"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <?php if (count($staffs) === 0): ?>
+
+                        <tr>
+                          <td colspan="8">No records available.</td>
+                        </tr>
+
+                      <?php else: ?>
+                        <?php foreach ($staffs as $entry): ?>
+                          <tr>
+                              <td><?= $entry['staff_id'] ?></td>
+                              <td><?= htmlspecialchars($entry['name']) ?></td>
+                              <td><?= htmlspecialchars($entry['email']) ?></td>
+                              <td><?= htmlspecialchars($entry['phone']) ?></td>
+                              <td><?= htmlspecialchars($entry['role']) ?></td>
+                              <td><?= date('M d, Y h:i A', strtotime($entry['created_at'])) ?></td>
+                              <td class="actions">
+                                <button class="btn btn-primary layer-open" data-layer-target="edit-staff">
+                                  <span class="btn-label">Edit</span>
+                                  <i class="bx bxs-edit btn-icon"></i>
+                                </button>
+
+                                <button class="btn btn-danger">
+                                  <span class="btn-label">Remove</span>
+                                  <i class="bx bxs-trash btn-icon"></i>
+                                </button>
+                              </td>
+                          </tr>
+                        <?php endforeach; ?>
+
+                      <?php endif; ?>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </main>
       </main>
     </main>
 
-    <aside class="layer" id="add-item">
+    <aside class="layer" id="add-staff">
       <header class="header header-page">
         <div class="actions left">
           <button class="btn btn-secondary layer-close" title="Close Panel">
@@ -87,7 +184,7 @@ if (!isset($_SESSION['branch_id'])) {
       </main>
     </aside>
 
-    <aside class="layer" id="edit-item">
+    <aside class="layer" id="edit-staff">
       <header class="header header-page">
         <div class="actions left">
           <button class="btn btn-secondary layer-close" title="Close Panel">

@@ -124,13 +124,17 @@ $inventories = $stmt->fetchAll();
                                 <td><?= $entry['menu_id'] ?></td>
                                 <td><?= $entry['menu_category_id'] ?></td>
                                 <td><?= htmlspecialchars($entry['name']) ?></td>
-                                <td><?= htmlspecialchars($entry['decription']) ?></td>
+                                <td><?= htmlspecialchars($entry['description']) ?></td>
                                 <td><?= $entry['price'] ?></td>
-                                <td>
-                                <button class="btn btn-primary layer-open" data-layer-target="edit-item">
-                                  <span class="btn-label">Edit</span>
-                                  <i class="bx bxs-user-plus btn-icon"></i>
-                                </button>
+                                <td class="actions">
+                                  <button class="btn btn-primary layer-open" data-layer-target="edit-item">
+                                    <span class="btn-label">Edit</span>
+                                    <i class="bx bxs-user-plus btn-icon"></i>
+                                  </button>
+                                  <button class="btn btn-danger">
+                                    <span class="btn-label">Remove</span>
+                                    <i class="bx bxs-trash btn-icon"></i>
+                                  </button>
                               </td>
                             </tr>
                           <?php endforeach; ?>
@@ -144,7 +148,7 @@ $inventories = $stmt->fetchAll();
               </div>
 
               <div class="tab-content" id="content-2">
-                <div class="table-container" id="customer-feedback">
+                <div class="table-container" id="menu-inventories">
                   <div class="table-header">
                     <form class="table-filter">
                       <div class="field">

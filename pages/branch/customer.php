@@ -125,7 +125,8 @@ $feedbacks = $stmt->fetchAll();
                               <td><?= htmlspecialchars($entry['email']) ?></td>
                               <td><?= htmlspecialchars($entry['phone']) ?></td>
                               <td><?= htmlspecialchars($entry['address']) ?></td>
-                              <td><?= $entry['created_at'] ?></td>
+                              <td><?= date('M d, Y h:i A', strtotime($entry['created_at'])) ?></td>
+                              
                           </tr>
                         <?php endforeach; ?>
 
@@ -189,7 +190,7 @@ $feedbacks = $stmt->fetchAll();
                               <td><?= $entry['customer_id'] ?></td>
                               <td><?= htmlspecialchars($entry['rating']) ?></td>
                               <td><?= htmlspecialchars($entry['message']) ?></td>
-                              <td><?= $entry['created_at'] ?></td>
+                              <td><?= date('M d, Y h:i A', strtotime($entry['created_at'])) ?></td>
                           </tr>
                         <?php endforeach; ?>
 
