@@ -106,8 +106,6 @@ $inventories = $stmt->fetchAll();
                           <th>Name</th>
                           <th>Description</th>
                           <th>Price</th>
-                          <th>Created</th>
-                          <th>Updated</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -128,8 +126,6 @@ $inventories = $stmt->fetchAll();
                                 <td><?= htmlspecialchars($entry['name']) ?></td>
                                 <td><?= htmlspecialchars($entry['decription']) ?></td>
                                 <td><?= $entry['price'] ?></td>
-                                <td><?= $entry['created_at'] ?></td>
-                                <td><?= $entry['updated_at'] ?></td>
                                 <td>
                                 <button class="btn btn-primary layer-open" data-layer-target="edit-item">
                                   <span class="btn-label">Edit</span>

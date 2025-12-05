@@ -15,13 +15,48 @@ if (!isset($_SESSION['branch_id'])) {
     exit;
 }
 
+$branch_id = $_SESSION['branch_id'];
+
+// Fetch branch data
 $stmt = $pdo->prepare("SELECT * FROM branches WHERE branch_id = ? AND deleted_at IS NULL");
-$stmt->execute([$_SESSION['branch_id']]);
+$stmt->execute([$branch_id]);
 $branch = $stmt->fetch();
 
 if (!$branch) {
-    echo "<script>alert('Branch not found.'); window.location='../home/login.php';</script>";
+    echo "<script>alert('Branch not found.'); parent.navigate(null, '../pages/home/home.php');</script>";
     exit;
+}
+
+// -------------------- UPDATE BRANCH --------------------
+if (isset($_POST['update_branch'])) {
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $address = trim($_POST['address']);
+
+    if ($name == "" || $email == "") {
+        echo "<script>alert('Name and Email are required.');</script>";
+    } else {
+        // Check duplicate email
+        $check = $pdo->prepare("SELECT branch_id FROM branches WHERE email = ? AND branch_id != ?");
+        $check->execute([$email, $branch_id]);
+
+        if ($check->rowCount() > 0) {
+            echo "<script>alert('Email is already used by another branch.');</script>";
+        } else {
+            $update = $pdo->prepare("
+                UPDATE branches SET
+                name = ?, email = ?, phone = ?, address = ?, updated_at = NOW()
+                WHERE branch_id = ?
+            ");
+
+            if ($update->execute([$name, $email, $phone, $address, $branch_id])) {
+                echo "<script>alert('Branch updated successfully!'); parent.navigate(null, '../pages/branch/account.php');</script>";
+            } else {
+                echo "<script>alert('Update failed.');</script>";
+            }
+        }
+    }
 }
 ?>
 
@@ -40,77 +75,65 @@ if (!$branch) {
     <main class="page">
       <header class="header header-page">
         <div class="context">
-          <h1>
-            <a 
-              >Profile</a
-            >
-          </h1>
+          <h1>Profile</h1>
         </div>
       </header>
 
       <main class="main-container main-scrollable">
         <main class="main">
-          <div class="box">
-    <p><strong>Branch Name:</strong> <?= htmlspecialchars($branch['name']) ?></p>
-    <p><strong>Email:</strong> <?= htmlspecialchars($branch['email']) ?></p>
-    <p><strong>Phone:</strong> <?= htmlspecialchars($branch['phone']) ?></p>
-    <p><strong>Address:</strong> <?= htmlspecialchars($branch['address']) ?></p>
+          <section class="form-container">
 
-</div>
+            <form class="form" method="POST" autocomplete="off">
+                <div class="account-field">
+                    <label for="name">
+                    <h4>Name:</h4>
+                  </label>
+                  <div class="input-container">
+                    <input type="text" name="name" placeholder="Full Name" value="<?= htmlspecialchars($branch['name']) ?>" required>
+                    <i class="bx bxs-user"></i>
+                  </div>
+                </div>
+                
+                <div class="account-field">
+                  <label for="email">
+                    <h4>Email:</h4>
+                  </label>
+                      <div class="input-container">
+                    <input type="email" name="email" placeholder="your.email@example.com" value="<?= htmlspecialchars($branch['email']) ?>" required>
+                    <i class="bx bxs-envelope"></i>
+                  </div>
+                </div>
+
+                <div class="account-field">
+                  <label for="phone">
+                    <h4>Phone:</h4>
+                  </label>
+                      <div class="input-container">
+                    <input type="phone" name="phone" placeholder="09XX-XXX-XXXX" value="<?= htmlspecialchars($branch['phone']) ?>" required>
+                    <i class="bx bxs-phone"></i>
+                  </div>
+                </div>
+
+                <div class="account-field">
+                  <label for="address">
+                    <h4>Address:</h4>
+                  </label>
+                      <div class="input-container">
+                    <input type="text" name="address" placeholder="Lot, Street, City, Province" value="<?= htmlspecialchars($branch['address']) ?>">
+                    <i class="bx bxs-location"></i>
+                  </div>
+                </div>
+
+                <div class="account-actions">
+                  <button class="btn btn-secondary" type="reset" name="update_branch">Cancel</button>
+                  <button class="btn btn-primary" type="submit" name="update_branch">Update</button>
+                </div>
+            </form>
+          </section>
+
         </main>
       </main>
     </main>
 
-    <aside class="layer" id="add-item">
-      <header class="header header-page">
-        <div class="actions left">
-          <button class="btn btn-secondary layer-close" title="Close Panel">
-            <i class="bx bxs-dock-right-arrow btn-icon"></i>
-          </button>
-        </div>
-        <div class="context">
-          <h1>Add Item</h1>
-        </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.php')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
-        </div>
-      </header>
-
-      <main class="main-container main-scrollable">
-        <main class="main">Dito Main Content</main>
-      </main>
-    </aside>
-
-    <aside class="layer" id="edit-item">
-      <header class="header header-page">
-        <div class="actions left">
-          <button class="btn btn-secondary layer-close" title="Close Panel">
-            <i class="bx bxs-dock-right-arrow btn-icon"></i>
-          </button>
-        </div>
-        <div class="context">
-          <h1>Edit Item</h1>
-        </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.php')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
-        </div>
-      </header>
-
-      <main class="main-container main-scrollable">
-        <main class="main">Dito Sidebar</main>
-      </main>
-    </aside>
   </body>
 </html>

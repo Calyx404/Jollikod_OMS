@@ -18,19 +18,19 @@
         </h1>
       </div>
       <div class="actions right">
-        <a
+        <button
           onclick="parent.navigate(event, '../pages/home/login.php')"
           class="btn btn-secondary"
         >
           <span class="btn-label">Log In</span>
           <i class="bx bxs-door-open btn-icon"></i>
-        </a>
-        <a
+        </button>
+        <button
           onclick="parent.navigate(event, '../pages/home/register.php')"
           class="btn btn-primary"
           ><span class="btn-label">Register</span>
           <i class="bx bxs-user-plus btn-icon"></i>
-        </a>
+        </button>
       </div>
     </header>
 
