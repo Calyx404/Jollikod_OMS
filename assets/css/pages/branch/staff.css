@@ -4,3 +4,12 @@
 @import "../../components/page.css";
 @import "../../components/tab.css";
 @import "../../components/table.css";
+@import "../../components/form.css";
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--pad-md);
+}

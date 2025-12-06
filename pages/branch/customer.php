@@ -18,8 +18,15 @@ if (!isset($_SESSION['branch_id'])) {
 $stmt = $pdo->query("SELECT * FROM customers WHERE deleted_at IS NULL ORDER BY created_at ASC");
 $customers = $stmt->fetchAll();
 
-$stmt = $pdo->query("SELECT * FROM feedbacks ORDER BY created_at DESC");
+$stmt = $pdo->query("
+    SELECT f.*, c.name AS customer_name
+    FROM feedbacks f
+    LEFT JOIN customers c 
+        ON f.customer_id = c.customer_id
+    ORDER BY f.created_at DESC
+");
 $feedbacks = $stmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +174,6 @@ $feedbacks = $stmt->fetchAll();
                     <thead>
                       <tr>
                         <th>ID</th>
-                          <th>Branch</th>
                           <th>Customer</th>
                           <th>Rating</th>
                           <th>Message</th>
@@ -186,8 +192,7 @@ $feedbacks = $stmt->fetchAll();
                         <?php foreach ($feedbacks as $entry): ?>
                           <tr>
                               <td><?= $entry['feedback_id'] ?></td>
-                              <td><?= $entry['branch_id'] ?></td>
-                              <td><?= $entry['customer_id'] ?></td>
+                              <td><?= htmlspecialchars($entry['customer_name']) ?></td>
                               <td><?= htmlspecialchars($entry['rating']) ?></td>
                               <td><?= htmlspecialchars($entry['message']) ?></td>
                               <td><?= date('M d, Y h:i A', strtotime($entry['created_at'])) ?></td>
@@ -206,56 +211,5 @@ $feedbacks = $stmt->fetchAll();
       </main>
     </main>
 
-    <aside class="layer" id="add-item">
-      <header class="header header-page">
-        <div class="actions left">
-          <button class="btn btn-secondary layer-close" title="Close Panel">
-            <i class="bx bxs-dock-right-arrow btn-icon"></i>
-          </button>
-        </div>
-        <div class="context">
-          <h1>Add Item</h1>
-        </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.php')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
-        </div>
-      </header>
-
-      <main class="main-container main-scrollable">
-        <main class="main">Dito Main Content</main>
-      </main>
-    </aside>
-
-    <aside class="layer" id="edit-item">
-      <header class="header header-page">
-        <div class="actions left">
-          <button class="btn btn-secondary layer-close" title="Close Panel">
-            <i class="bx bxs-dock-right-arrow btn-icon"></i>
-          </button>
-        </div>
-        <div class="context">
-          <h1>Edit Item</h1>
-        </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.php')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
-        </div>
-      </header>
-
-      <main class="main-container main-scrollable">
-        <main class="main">Dito Sidebar</main>
-      </main>
-    </aside>
   </body>
 </html>

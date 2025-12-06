@@ -135,7 +135,7 @@ if (isset($_POST['update_branch'])) {
 
                 <div class="account-actions">
                   <button class="btn btn-secondary" type="reset" name="update_branch">Cancel</button>
-                  <button class="btn btn-primary" type="submit" name="update_branch">Update</button>
+                  <button class="btn btn-primary" type="submit" name="update_branch">Save</button>
                 </div>
             </form>
           </section>

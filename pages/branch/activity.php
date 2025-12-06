@@ -61,7 +61,7 @@ SELECT
     ol.order_log_id, ol.order_id, ol.queued_at, ol.preparing_at, ol.delivering_at, ol.delivered_at, ol.received_at,
     o.created_at, o.item_quantity, o.destination_address,
     c.name AS customer_name,
-    p.subtotal, p.vat, p.delivery_fee, p.total
+    p.subtotal, p.vat, p.delivery_fee, p.total, p.wallet_provider, p.status
 FROM order_logs ol
 JOIN orders o ON ol.order_id=o.order_id
 JOIN customers c ON o.customer_id=c.customer_id
@@ -178,7 +178,6 @@ if (isset($_GET['tab']) && in_array((int) $_GET['tab'], [1, 2, 3, 4, 5]))
 
                       <button class="btn btn-primary">
                         <span class="btn-label">Apply</span>
-                        <i class="bx bxs-user-plus btn-icon"></i>
                       </button>
                     </form>
                   </div>
@@ -187,29 +186,31 @@ if (isset($_GET['tab']) && in_array((int) $_GET['tab'], [1, 2, 3, 4, 5]))
                   <table>
                     <thead>
                       <tr>
-                        <th>Date</th>
+                        <th>ID</th>
                         <th>Customer</th>
                         <th>Qty</th>
                         <th>Address</th>
                         <th>Amount</th>
+                        <th>Placed</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php foreach ($orders as $o): ?>
                         <tr>
-                          <td><?= date('M d, Y h:i A', strtotime($o['created_at'])) ?></td>
+                          <td><?= $o['order_id'] ?></td>
                           <td><?= htmlspecialchars($o['customer_name']) ?></td>
                           <td><?= $o['item_quantity'] ?></td>
                           <td><?= htmlspecialchars($o['destination_address'] ?? 'Pickup') ?></td>
                           <td>₱<?= number_format($o['total'], 2) ?></td>
+                          <td><?= date('M d, Y h:i A', strtotime($o['created_at'])) ?></td>
                           <td class="actions">
                             <!-- View opens layer for THIS order_log -->
                             <a href="?view=<?= $o['order_log_id'] ?>&tab=<?= $tabIndex ?>"
-                              class="btn btn-primary layer-open">View</a>
+                              class="btn btn-secondary layer-open"><span class="btn-label">View</span><i class="bx bxs-dots-horizontal-rounded btn-icon"></i></a>
                             <?php if ($key !== 'received'): ?>
                               <a href="?next=<?= $o['order_log_id'] ?>&view=<?= $selectedOrder ? $selectedOrder['order_log_id'] : '' ?>&tab=<?= $tabIndex ?>"
-                                class="btn btn-secondary">Next</a>
+                                class="btn btn-primary"><span class="btn-label">Next</span><i class="bx bxs-arrow-big-right-line btn-icon"></i></a>
                             <?php endif; ?>
                           </td>
                         </tr>
@@ -244,34 +245,111 @@ if (isset($_GET['tab']) && in_array((int) $_GET['tab'], [1, 2, 3, 4, 5]))
     <main class="main-container main-scrollable">
       <main class="main">
         <?php if ($selectedOrder && !empty($orderItems)): ?>
-          <div style="padding:20px; background:#fff; border-radius:8px;">
-            <h2 style="text-align:center; color:#e31837;">JOLLIKOD</h2>
-            <p><strong>Order #<?= $selectedOrder['order_id'] ?></strong></p>
-            <p><strong>Customer:</strong> <?= htmlspecialchars($selectedOrder['customer_name']) ?></p>
-            <p><strong>Date:</strong> <?= date('F d, Y h:i A', strtotime($selectedOrder['created_at'])) ?></p>
-            <p><strong>Delivery:</strong> <?= htmlspecialchars($selectedOrder['destination_address'] ?? 'Pickup') ?></p>
-            <hr style="border:1px dashed #ccc; margin:15px 0;">
-            <?php foreach ($orderItems as $item): ?>
-              <div style="display:flex; justify-content:space-between; margin:5px 0;">
-                <span><?= htmlspecialchars($item['item_name']) ?> × <?= $item['quantity'] ?></span>
-                <span>₱<?= number_format($item['total'], 2) ?></span>
-              </div>
-            <?php endforeach; ?>
-            <hr style="border:1px dashed #ccc; margin:15px 0;">
-            <div style="display:flex; justify-content:space-between;">
-              <span>Subtotal</span><span>₱<?= number_format($selectedOrder['subtotal'], 2) ?></span></div>
-            <div style="display:flex; justify-content:space-between;">
-              <span>VAT</span><span>₱<?= number_format($selectedOrder['vat'], 2) ?></span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Delivery
-                Fee</span><span>₱<?= number_format($selectedOrder['delivery_fee'], 2) ?></span></div>
-            <hr style="border-top:3px double #000; margin:15px 0;">
-            <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.3em;">
-              <span>TOTAL</span>
-              <span style="color:#e31837;">₱<?= number_format($selectedOrder['total'], 2) ?></span>
+          <section class="receipt">
+
+            <!-- TOP CARD -->
+            <div class="receipt-section highlight">
+              <p class="status">
+                <?php
+                  if ($selectedOrder['received_at']) echo "Received";
+                  elseif ($selectedOrder['delivered_at']) echo "Delivered";
+                  elseif ($selectedOrder['delivering_at']) echo "Out for Delivery";
+                  elseif ($selectedOrder['preparing_at']) echo "Out for Delivery";
+                  elseif ($selectedOrder['queued_at']) echo "Preparing";
+                  else echo "Queued";
+                ?>
+              </p>
+
+              <h4>Order #<?= $selectedOrder['order_id'] ?></h4>
+              <p class="date"><?= date('F d, Y h:i A', strtotime($selectedOrder['created_at'])) ?></p>
             </div>
-          </div>
+
+            <!-- ORDER SECTION -->
+            <div class="receipt-section">
+              <div class="section-title">
+                <h5>Order</h5>
+                <div class="title-line"></div>
+              </div>
+
+              <div class="section-content">
+                <?php foreach ($orderItems as $item): ?>
+                <div class="item-row">
+                  <span class="left"><?= $item['quantity'] ?> <i class='bx  bxs-x'></i>  <?= htmlspecialchars($item['item_name']) ?></span>
+                  <span class="right">₱<?= number_format($item['total'], 2) ?></span>
+                </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+
+            <!-- DELIVERY SECTION -->
+            <div class="receipt-section">
+              <div class="section-title">
+                <h5>Delivery</h5>
+                <div class="title-line"></div>
+              </div>
+
+              <div class="section-content">
+                <div class="label-row">
+                  <label>From (Branch)</label>
+                  <p><?= htmlspecialchars($selectedOrder['branch_address'] ?? 'Branch Address') ?></p>
+                </div>
+
+                <div class="label-row">
+                  <label>To (Customer)</label>
+                  <p><?= htmlspecialchars($selectedOrder['destination_address'] ?? 'Pickup') ?></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAYMENT SECTION -->
+            <div class="receipt-section">
+              <div class="section-title">
+                <h5>Payment</h5>
+                <div class="title-line"></div>
+              </div>
+
+              <div class="section-content">
+
+                <div class="payment-row">
+                  <span class="left">Subtotal</span>
+                  <span class="right">₱<?= number_format($selectedOrder['subtotal'], 2) ?></span>
+                </div>
+
+                <div class="payment-row">
+                  <span class="left">VAT</span>
+                  <span class="right">₱<?= number_format($selectedOrder['vat'], 2) ?></span>
+                </div>
+
+                <div class="payment-row">
+                  <span class="left">Delivery Fee</span>
+                  <span class="right">₱<?= number_format($selectedOrder['delivery_fee'], 2) ?></span>
+                </div>
+
+                <div class="payment-row">
+                  <span class="left">Wallet</span>
+                  <span class="right">
+                    <?= isset($selectedOrder['wallet_provider']) ? htmlspecialchars($selectedOrder['wallet_provider']) : 'Paid' ?>
+                  </span>
+                </div>
+
+                <div class="payment-row">
+                  <span class="left">Payment Status</span>
+                  <span class="right">
+                    <?= isset($selectedOrder['status']) ? ucwords(strtolower(htmlspecialchars($selectedOrder['status']))) : 'Paid' ?>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="receipt-section highlight">
+              <p class="total">Total</p>
+              <h4>₱<?= number_format($selectedOrder['total'], 2) ?></h4>
+            </div>
+
+          </section>
         <?php else: ?>
-          <p style="text-align:center; color:#999; padding:50px 20px;">Click "View" on any order to see receipt</p>
+          <p>Click "View" on any order to see receipt</p>
         <?php endif; ?>
       </main>
     </main>

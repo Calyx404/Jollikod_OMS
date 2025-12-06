@@ -15,6 +15,32 @@
     color: var(--neutral-100);
     display: flex;
     align-items: center;
+
+    & .input-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      overflow: hidden;
+
+      & select {
+        height: 100%;
+        flex: 1;
+        font-weight: 800;
+        font-family: var(--font-sans);
+        line-height: 1;
+        font-size: 2rem;
+        outline: none;
+        border: none;
+        background: transparent;
+        color: var(--neutral-100);
+        padding-right: var(--pad-lg);
+        white-space: nowrap;
+        max-width: 28ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
   }
 
   & .actions {
@@ -37,6 +63,10 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .ellipsis { max-width: 18ch; }
+}
+
 @media (max-width: 768px) {
   .header .actions {
     gap: var(--pad-sm);
@@ -53,6 +83,13 @@
 
     & .context {
       color: var(--neutral-800);
+
+      & .input-container {
+
+        & select {
+          color: var(--neutral-800);
+        }
+      }
     }
   }
 }

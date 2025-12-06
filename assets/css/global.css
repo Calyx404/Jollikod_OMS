@@ -66,6 +66,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
   transition: var(--transition-medium);
 
   &::-webkit-scrollbar {
@@ -162,8 +163,10 @@ h1.logo,
 img.logo,
 label.tab,
 .page-container,
+.cat-chip,
 a,
-button {
+button,
+select {
   cursor: var(--cursor-pointer);
 }
 
@@ -172,6 +175,7 @@ input[type="text"],
 input[type="phone"],
 input[type="email"],
 input[type="password"],
+input[type="number"],
 textarea {
   cursor: var(--cursor-text);
 }

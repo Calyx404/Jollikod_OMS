@@ -19,13 +19,14 @@
 
       & .btn {
           flex: 1;
+        padding: var(--size-base) var(--size-2xl);
       }
   }
 
   & .input-container {
     position: relative;
     width: 100%;
-    border: 2px solid var(--neutral-400);
+    border: 2px solid var(--neutral-200);
     padding: var(--pad-md) var(--pad-lg);
     border-radius: var(--radius-md);
     display: flex;
@@ -40,9 +41,19 @@
       border: 2px solid var(--color-secondary);
     }
 
-    & input {
+    & textarea {
+      resize: none;
+    }
+
+    & input,
+    & textarea,
+    & select {
+      height: 100%;
       flex: 1;
-      font-weight: 600;
+      font-weight: 800;
+      font-family: var(--font-sans);
+      line-height: 1;
+      font-size: var(--size-base);
       color: var(--neutral-800);
       outline: none;
       border: none;

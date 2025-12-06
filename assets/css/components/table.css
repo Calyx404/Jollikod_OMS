@@ -3,7 +3,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--pad-sm);
+  gap: var(--pad-md);
 
   & .table-header {
     width: 100%;
@@ -13,7 +13,6 @@
     & .table-filter {
       width: 100%;
       display: flex;
-      flex-wrap: wrap;
       gap: var(--pad-md);
       align-items: flex-end;
 
@@ -80,12 +79,17 @@
         text-align: left;
         border-bottom: 1px solid var(--neutral-200);
         white-space: nowrap;
+
+        &.ellipsis {
+          max-width: 28ch;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
 
       & td.actions {
         display: flex;
         align-items: center;
-        justify-content: center;
         gap: var(--pad-md);
       }
 
@@ -102,24 +106,29 @@
   }
 }
 
-/* -----------------------
-   RESPONSIVE
------------------------- */
+@media screen and (max-width: 900px) {
+  td.ellipsis { max-width: 18ch; }
+}
+
 @media screen and (max-width: 768px) {
   .table-container {
     & .table-header {
       & .table-filter {
         flex-direction: column;
         align-items: flex-start;
+        gap: var(--pad-sm);
 
-        & .btn-apply {
+        & * {
           width: 100%;
         }
-      }
-    }
 
-    & .table-content table {
-      min-width: 450px;
+        & .field {
+          & select,
+          & input {
+            width: auto;
+          }
+        }
+      }
     }
   }
 }

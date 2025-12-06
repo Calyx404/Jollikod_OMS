@@ -187,7 +187,7 @@ if (isset($_POST['branch_register'])) {
                   type="text"
                   name="branch_name"
                   id="branch_name"
-                  placeholder="Username"
+                  placeholder="Full Name"
                   required
                 />
                 <i class="bx bxs-user"></i>

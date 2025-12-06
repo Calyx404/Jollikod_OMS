@@ -77,6 +77,3 @@
 #tab-6:checked ~ #content-6 {
   display: block;
 }
-
-@media screen and (max-width: 768px) {
-}

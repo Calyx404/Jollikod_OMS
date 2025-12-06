@@ -23,7 +23,7 @@ $stmt->execute([$customer_id]);
 $customer = $stmt->fetch();
 
 if (!$customer) {
-    echo "<script>alert('Customer not found.'); parent.navigate(null, '../pages/home/home.php');</script>";
+    echo "<script>alert('Branch not found.'); parent.navigate(null, '../pages/home/home.php');</script>";
     exit;
 }
 
@@ -35,7 +35,7 @@ if (isset($_GET['delete']) && $_GET['delete'] === "yes") {
 
     session_unset();
     session_destroy();
-    echo "<script>alert('Customer account deleted.'); window.top.location.reload();</script>";
+    echo "<script>alert('Branch account deleted.'); window.top.location.reload();</script>";
     exit;
 }
 
@@ -90,7 +90,7 @@ if (isset($_GET['logout'])) {
           <button
             class="btn btn-primary"
           >
-            <span class="btn-label">Apply Changes</span>
+            <span class="btn-label">Save</span>
             <i class="bx bxs-save btn-icon"></i>
           </button>
         </div>
@@ -121,7 +121,7 @@ if (isset($_GET['logout'])) {
                 <div class="settings-field">
                     <span>Haptics</span>
                     <label class="switch">
-                        <input type="checkbox" >
+                        <input type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </div>

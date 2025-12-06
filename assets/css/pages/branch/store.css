@@ -4,3 +4,10 @@
 @import "../../components/page.css";
 @import "../../components/tab.css";
 @import "../../components/table.css";
+@import "../../components/kpi.css";
+@import "../../components/chart.css";
+
+.table-container .table-content {
+    border: none;
+    border-radius: none;
+}

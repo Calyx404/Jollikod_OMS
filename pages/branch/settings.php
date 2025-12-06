@@ -90,7 +90,7 @@ if (isset($_GET['logout'])) {
           <button
             class="btn btn-primary"
           >
-            <span class="btn-label">Apply Changes</span>
+            <span class="btn-label">Save</span>
             <i class="bx bxs-save btn-icon"></i>
           </button>
         </div>
@@ -121,7 +121,7 @@ if (isset($_GET['logout'])) {
                 <div class="settings-field">
                     <span>Haptics</span>
                     <label class="switch">
-                        <input type="checkbox" >
+                        <input type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </div>

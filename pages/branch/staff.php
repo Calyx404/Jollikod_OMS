@@ -15,6 +15,62 @@ if (!isset($_SESSION['branch_id'])) {
     exit;
 }
 
+// ---------- HANDLE POST ACTIONS ----------
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+
+    // ADD STAFF
+    if ($_POST['action'] === 'add') {
+        $stmt = $pdo->prepare("
+            INSERT INTO staffs (name, email, phone, role)
+            VALUES (?, ?, ?, ?)
+        ");
+
+        $stmt->execute([
+            $_POST['name'],
+            $_POST['email'],
+            $_POST['phone'],
+            $_POST['role']
+        ]);
+
+        header("Location: staff.php");
+        exit;
+    }
+
+    // EDIT STAFF
+    if ($_POST['action'] === 'edit') {
+        $stmt = $pdo->prepare("
+            UPDATE staffs
+            SET name = ?, email = ?, phone = ?, role = ?
+            WHERE staff_id = ?
+        ");
+
+        $stmt->execute([
+            $_POST['name'],
+            $_POST['email'],
+            $_POST['phone'],
+            $_POST['role'],
+            $_POST['staff_id']
+        ]);
+
+        header("Location: staff.php");
+        exit;
+    }
+
+    // DELETE STAFF (soft delete)
+    if ($_POST['action'] === 'delete') {
+        $stmt = $pdo->prepare("
+            UPDATE staffs
+            SET deleted_at = NOW()
+            WHERE staff_id = ?
+        ");
+
+        $stmt->execute([$_POST['staff_id']]);
+
+        header("Location: staff.php");
+        exit;
+    }
+}
+
 $stmt = $pdo->query("SELECT * FROM staffs WHERE deleted_at IS NULL ORDER BY created_at ASC");
 $staffs = $stmt->fetchAll();
 ?>
@@ -131,16 +187,29 @@ $staffs = $stmt->fetchAll();
                               <td><?= htmlspecialchars($entry['role']) ?></td>
                               <td><?= date('M d, Y h:i A', strtotime($entry['created_at'])) ?></td>
                               <td class="actions">
-                                <button class="btn btn-primary layer-open" data-layer-target="edit-staff">
-                                  <span class="btn-label">Edit</span>
-                                  <i class="bx bxs-edit btn-icon"></i>
-                                </button>
+                                  <button 
+                                      class="btn btn-primary layer-open"
+                                      data-layer-target="edit-staff"
+                                      data-staff-id="<?= $entry['staff_id'] ?>"
+                                      data-staff-name="<?= htmlspecialchars($entry['name']) ?>"
+                                      data-staff-email="<?= htmlspecialchars($entry['email']) ?>"
+                                      data-staff-phone="<?= htmlspecialchars($entry['phone']) ?>"
+                                      data-staff-role="<?= htmlspecialchars($entry['role']) ?>"
+                                  >
+                                      <span class="btn-label">Edit</span>
+                                      <i class="bx bxs-edit btn-icon"></i>
+                                  </button>
 
-                                <button class="btn btn-danger">
-                                  <span class="btn-label">Remove</span>
-                                  <i class="bx bxs-trash btn-icon"></i>
-                                </button>
+                                  <form method="post" style="display:inline;">
+                                      <input type="hidden" name="action" value="delete" />
+                                      <input type="hidden" name="staff_id" value="<?= $entry['staff_id'] ?>" />
+                                      <button class="btn btn-danger" onclick="return confirm('Remove this staff?')">
+                                          <span class="btn-label">Remove</span>
+                                          <i class="bx bxs-trash btn-icon"></i>
+                                      </button>
+                                  </form>
                               </td>
+
                           </tr>
                         <?php endforeach; ?>
 
@@ -166,21 +235,58 @@ $staffs = $stmt->fetchAll();
           </button>
         </div>
         <div class="context">
-          <h1>Add Item</h1>
+          <h1>Add Staff</h1>
         </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.php')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
         </div>
       </header>
 
       <main class="main-container main-scrollable">
-        <main class="main">Dito Main Content</main>
+        <main class="main">
+        <section class="form-container">  
+        <form method="post" class="form panel-form">
+            <input type="hidden" name="action" value="add">
+
+            <div class="account-field">
+              <label>Name</label>
+              <div class="input-container">
+                <input type="text" name="name" required placeholder="Full Name">
+              </div>
+            </div>
+
+            <div class="account-field">
+              <label>Email</label>
+              <div class="input-container">
+                <input type="email" name="email" required placeholder="Email Address">
+              </div>
+            </div>
+
+            <div class="account-field">
+              <label>Phone</label>
+              <div class="input-container">
+                <input type="text" name="phone" placeholder="Phone Number">
+              </div>
+            </div>
+
+            <div class="account-field">
+              <label>Role</label>
+              <div class="input-container">
+                <select name="role" required>
+                  <option value="Cashier">Cashier</option>
+                  <option value="Cook">Cook</option>
+                  <option value="Crew">Crew</option>
+                  <option value="Manager">Manager</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="account-actions">
+              <button type="button" class="btn btn-secondary layer-close">Cancel</button>
+              <button class="btn btn-primary" type="submit">Add Staff</button>
+            </div>
+          </form>
+          </section>
+        </main>
+
       </main>
     </aside>
 
@@ -192,22 +298,72 @@ $staffs = $stmt->fetchAll();
           </button>
         </div>
         <div class="context">
-          <h1>Edit Item</h1>
-        </div>
-        <div class="actions right">
-          <button
-            onclick="parent.navigate(event, '../pages/branch/activity.php')"
-            class="btn btn-primary"
-            title="Di ko na alam"
-          >
-            <i class="bx bxs-user-plus btn-icon"></i>
-          </button>
+          <h1>Staff Details</h1>
         </div>
       </header>
 
       <main class="main-container main-scrollable">
-        <main class="main">Dito Sidebar</main>
+        <main class="main">
+        <section class="form-container">  
+        <form method="post" class="form panel-form" id="edit-staff-form">
+            <input type="hidden" name="action" value="edit">
+            <input type="hidden" name="staff_id" id="edit-staff-id">
+
+            <div class="account-field">
+              <label>Name</label>
+              <div class="input-container">
+                <input type="text" name="name" id="edit-staff-name" required>
+              </div>
+            </div>
+
+            <div class="account-field">
+              <label>Email</label>
+              <div class="input-container">
+                <input type="email" name="email" id="edit-staff-email" required>
+              </div>
+            </div>
+
+            <div class="account-field">
+              <label>Phone</label>
+              <div class="input-container">
+                <input type="text" name="phone" id="edit-staff-phone">
+              </div>
+            </div>
+
+            <div class="account-field">
+              <label>Role</label>
+              <div class="input-container">
+                <select name="role" id="edit-staff-role" required>
+                  <option value="Cashier">Cashier</option>
+                  <option value="Cook">Cook</option>
+                  <option value="Crew">Crew</option>
+                  <option value="Manager">Manager</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="account-actions">
+              <button type="button" class="btn btn-secondary layer-close">Cancel</button>
+              <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+          </form>
+          </section>
+        </main>
+
       </main>
     </aside>
+
+    <script>
+    document.querySelectorAll("[data-layer-target='edit-staff']").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.getElementById("edit-staff-id").value = btn.dataset.staffId;
+            document.getElementById("edit-staff-name").value = btn.dataset.staffName;
+            document.getElementById("edit-staff-email").value = btn.dataset.staffEmail;
+            document.getElementById("edit-staff-phone").value = btn.dataset.staffPhone;
+            document.getElementById("edit-staff-role").value = btn.dataset.staffRole;
+        });
+    });
+    </script>
+
   </body>
 </html>

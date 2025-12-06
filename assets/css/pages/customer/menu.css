@@ -2,3 +2,118 @@
 @import "../../components/header.css";
 @import "../../components/main.css";
 @import "../../components/page.css";
+@import "../../components/tab.css";
+@import "../../components/table.css";
+@import "../../components/form.css";
+@import "../../components/receipt.css";
+
+.menu-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: var(--pad-md);
+    gap: var(--pad-md);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.menu-card {
+    background: var(--neutral-100);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.menu-card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+.menu-card .add-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pad-md);
+}
+
+.category-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: var(--pad-md);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: var(--pad-sm) 0;
+}
+
+.cat-chip {
+    padding: var(--size-sm) var(--size-2xl);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--size-base);
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pad-sm);
+    white-space: nowrap;
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2), 0 3px 2px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.3), 0 3px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+        transform: translateY(2px);
+        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2), 03px 2px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.cat-chip.active {
+    background: var(--color-secondary);
+    color: var(--neutral-100);
+}
+
+.basket-count {
+    background: var(--color-primary);
+    color: var(--neutral-100);
+    padding: .12rem .5rem;
+    border-radius: var(--radius-full);
+    font-weight: 800;
+    margin-left: .4rem;
+    font-size: .85rem;
+}
+
+/* responsive: keep small tweaks */
+@media (max-width:720px) {
+    .menu-card img {
+    height: 110px;
+    }
+}

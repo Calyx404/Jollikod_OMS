@@ -28,7 +28,6 @@ if (!$customer) {
 }
 
 // -------------------- UPDATE --------------------
-
 if (isset($_POST['update_customer'])) {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -136,7 +135,7 @@ if (isset($_POST['update_customer'])) {
 
                 <div class="account-actions">
                   <button class="btn btn-secondary" type="reset" name="update_customer">Cancel</button>
-                  <button class="btn btn-primary" type="submit" name="update_customer">Update</button>
+                  <button class="btn btn-primary" type="submit" name="update_customer">Save</button>
                 </div>
             </form>
           </section>
